@@ -1,0 +1,41 @@
+{
+  "name": "ucc-overwatch-1-0",
+  "version": "1.0.0",
+  "description": "UNSW Contenders Cup Graphics Package for Overwatch 2",
+  "homepage": "https://unswesports.com.au",
+  "author": {
+    "name": "Xander Gonzaga",
+    "email": "xandergonzaga@hotmail.com",
+    "url": "https://riotline.dev"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.1.1",
+    "dashboardPanels": [
+      {
+        "name": "ucc-overwatch",
+        "title": "UCC Overwatch",
+        "width": 2,
+        "file": "ucc-overwatch.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  }
+  
+}
