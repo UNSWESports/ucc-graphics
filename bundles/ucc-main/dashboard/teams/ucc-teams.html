@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 	<!-- Team Settings -->
@@ -33,15 +33,11 @@
 	</div>
 	<!-- Other Settings -->
 	<div class="section">
-		<button id="updateButton" class="button">Update</button>
+		<div class="flex_sb">
+			<button id="updateButton" class="button_lrg button">Update</button>
+			<button id="swapSidesButton" class="button">Swap Sides</button>
+		</div>
 	</div>
-
-	<script>
-		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
-
-		// You can access the NodeCG api anytime from the `window.nodecg` object
-		// Or just `nodecg` for short. Like this!:
-		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
-	</script>
+	<script src="script.js"></script>
 </body>
 </html>

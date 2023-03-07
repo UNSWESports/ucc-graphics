@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
 </head>
 <body>
 	<!-- Settings -->
@@ -10,8 +10,8 @@
 		<!-- Overlay Selector -->
 		<div class="flex_sb">
 			<div class="form__group field full_field">
-				<label for="layout" class="form__label">Overlay Layout</label>
-				<select id="layout" class="form__field dropdown">
+				<label for="layoutInput" class="form__label">Overlay Layout</label>
+				<select id="layoutInput" class="form__field dropdown">
 					<option value="example1">Example 1</option>
 					<option value="example2">Example 2</option>
 				</select>
@@ -28,13 +28,6 @@
 		<br>
 		<button id="updateButton" class="button">Update</button>
 	</div>
-
-	<script>
-		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
-
-		// You can access the NodeCG api anytime from the `window.nodecg` object
-		// Or just `nodecg` for short. Like this!:
-		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
-	</script>
+	<script src="script.js"></script>
 </body>
 </html>

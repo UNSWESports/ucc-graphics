@@ -47,6 +47,10 @@
     display: block;
 }
 
+.button_lrg {
+    min-width: 12rem;
+}
+
 .form__group {
     position: relative;
     padding: 15px 0 0;
