@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- Team Settings -->
+	<div class="section">
+		<!-- Team 1 Settings -->
+		<div class="flex_sb">
+			<div class="form__group field name_field">
+				<input list="team1DataList" id="team1NameInput" class="form__field"></input>
+				<label for="team1Input" class="form__label">Team 1 Name:</label>
+			</div>
+			<div class="form__group field score_field">
+				<input id="team1ScoreInput" class="form__field" type="number" min="0" max="99"></input>
+				<label for="team1ScoreInput" class="form__label">Score:</label>
+			</div>
+		</div>
+		<br>
+		<!-- Team 2 Settings -->
+		<div class="flex_sb">
+			<div class="form__group field name_field">
+				<input list="team2DataList" id="team2NameInput" class="form__field"></input>
+				<label for="team2Input" class="form__label">Team 2 Name:</label>
+			</div>
+			<div class="form__group field score_field">
+				<input id="team2ScoreInput" class="form__field" type="number" min="0" max="99"></input>
+				<label for="team2ScoreInput" class="form__label">Score:</label>
+			</div>
+		</div>
+	</div>
+	<!-- Other Settings -->
+	<div class="section">
+		<button id="updateButton" class="button">Update</button>
+	</div>
+
+	<script>
+		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
+
+		// You can access the NodeCG api anytime from the `window.nodecg` object
+		// Or just `nodecg` for short. Like this!:
+		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
+	</script>
+</body>
+</html>

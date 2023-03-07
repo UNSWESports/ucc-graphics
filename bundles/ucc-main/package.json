@@ -22,8 +22,15 @@
     "compatibleRange": "^1.1.1",
     "dashboardPanels": [
       {
+        "name": "ucc-teams",
+        "title": "UCC Match Teams",
+        "width": 4,
+        "file": "ucc-teams.html",
+        "headerColor": "#525F78"
+      },
+      {
         "name": "ucc-main",
-        "title": "UCC Main",
+        "title": "UCC Settings",
         "width": 2,
         "file": "ucc-main.html",
         "headerColor": "#525F78"
