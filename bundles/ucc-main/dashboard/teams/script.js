@@ -38,3 +38,18 @@ btn_update.onclick = () => {
     rpc_ucc_team2_name.value = input_team2_name.value;
     rpc_ucc_team2_score.value = input_team2_score.value;
 }
+
+btn_swap_sides.onclick = () => {
+    nodecg.sendMessage('ucc_teams.swap_sides');
+
+    // Swapping into temp variables in case updating
+    // nodecg replicants updates the values we need
+    let temp_team = input_team1_name.value;
+    let temp_score = input_team1_score.value;
+
+    rpc_ucc_team1_name.value = input_team2_name.value;
+    rpc_ucc_team1_score.value = input_team2_score.value;
+
+    rpc_ucc_team2_name.value = temp_team;
+    rpc_ucc_team2_score.value = temp_score;
+};
