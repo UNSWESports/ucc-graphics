@@ -8,4 +8,15 @@ module.exports = function (nodecg) {
 	// Game Text (Info Box)
 	// Main Title (UNSW Contenders Cup 2xTx)
 	// Secondary Title (Valorant Premier)
+
+	const rpc_ucc_overlay_list = nodecg.Replicant('overlay_list', { 
+		defaultValue: [], 
+		persistent: false
+	});
+
+	// Register Overlay Bundle
+	nodecg.listenFor('registerOverlay', (data) => {
+		if (data in rpc_ucc_overlay_list.value) return;
+		rpc_ucc_overlay_list.value.push(data);
+	});
 };

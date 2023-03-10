@@ -9,11 +9,11 @@ const input_team2_name = document.querySelector('#team2NameInput');
 const input_team2_score = document.querySelector('#team2ScoreInput');
 
 /* NodeCG Replicants */
-const rpc_ucc_team1_name = nodecg.Replicant('ucc_teams.team1_name');
-const rpc_ucc_team1_score = nodecg.Replicant('ucc_teams.team1_score');
+const rpc_ucc_team1_name = nodecg.Replicant('team1_name');
+const rpc_ucc_team1_score = nodecg.Replicant('team1_score');
 
-const rpc_ucc_team2_name = nodecg.Replicant('ucc_teams.team2_name');
-const rpc_ucc_team2_score = nodecg.Replicant('ucc_teams.team2_score');
+const rpc_ucc_team2_name = nodecg.Replicant('team2_name');
+const rpc_ucc_team2_score = nodecg.Replicant('team2_score');
 
 /* NodeCG Event Listeners */
 rpc_ucc_team1_name.on('change', (newValue, oldValue) => {
@@ -40,16 +40,8 @@ btn_update.onclick = () => {
 }
 
 btn_swap_sides.onclick = () => {
-    nodecg.sendMessage('ucc_teams.swap_sides');
-
-    // Swapping into temp variables in case updating
-    // nodecg replicants updates the values we need
-    let temp_team = input_team1_name.value;
-    let temp_score = input_team1_score.value;
-
-    rpc_ucc_team1_name.value = input_team2_name.value;
-    rpc_ucc_team1_score.value = input_team2_score.value;
-
-    rpc_ucc_team2_name.value = temp_team;
-    rpc_ucc_team2_score.value = temp_score;
+    // Send a message. Let the layouts listen and do swaps
+    // so that any specific games can have their own
+    // ways of swapping sides
+    nodecg.sendMessage('swap_sides');
 };

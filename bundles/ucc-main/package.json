@@ -1,6 +1,6 @@
 {
   "name": "ucc-main",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "UNSW Contenders Cup Main Package. Required for base functionality and interconnects.",
   "homepage": "https://unswesports.com.au",
   "author": {

@@ -12,8 +12,6 @@
 			<div class="form__group field full_field">
 				<label for="layoutInput" class="form__label">Overlay Layout</label>
 				<select id="layoutInput" class="form__field dropdown">
-					<option value="example1">Example 1</option>
-					<option value="example2">Example 2</option>
 				</select>
 			</div>
 		</div>
@@ -35,6 +33,14 @@
 		</div>
 		<br>
 		<button id="updateButton" class="button">Update</button>
+		<br>
+		<div class="flex_sb">
+			<label class="cs">Show Overlay</label>
+			<label class="switch">
+				<input type="checkbox" id="showOverlay" value="false" checked onchange="updateOverlayState(this)">
+				<span class="slider"></span>
+			</label>
+		</div>
 	</div>
 	<script src="script.js"></script>
 </body>

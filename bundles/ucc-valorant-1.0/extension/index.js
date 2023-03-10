@@ -7,4 +7,6 @@ module.exports = function (nodecg) {
 	nodecg.log.info('You can use any libraries, frameworks, and tools you want. There are no limits.');
 	nodecg.log.info('Visit https://nodecg.com for full documentation.');
 	nodecg.log.info('Good luck!');
+
+	nodecg.sendMessageToBundle('registerOverlay', 'ucc-main', nodecg.bundleName);
 };

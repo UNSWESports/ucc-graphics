@@ -2,36 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<style>
-		body {
-			font-family: sans-serif;
-		}
-
-		.monospace {
-			font-family: monospace;
-		}
-	</style>
+	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-	<p>
-		Hello, I'm one of the graphics in your bundle!
-		I'm where you put the graphics you want to run in your broadcast software!
-	</p>
+	<div id="overlay" class="overlay" style="transform: translateY(-100vh)">
+		<img src="valorant.svg" class="graphic_bg" id="graphic_bg" data-scaleX="1"/>
 
-	<p>To edit me, open "<span id="path" class="monospace"></span>" in your favorite text editor or IDE.</p>
-
-	<p>You can use any libraries, frameworks, and tools you want. There are no limits.</p>
-
-	<p>Visit <a href="https://nodecg.com" target="_blank" rel="noopener">https://nodecg.com</a> for full documentation.</p>
-
-	<p>Have fun!</p>
-
-	<script>
-		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
-
-		// You can access the NodeCG api anytime from the `window.nodecg` object
-		// Or just `nodecg` for short. Like this!:
-		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
-	</script>
+		<span class="width_team">
+			<p id="team1Name" class="team_text team_left"></p>
+			<p id="team1Score" class="team_text team_score"></p>
+		</span>
+		<span class="width_spacer"></span>
+		<span class="width_centre">
+			<p id="subtitle" class="centre_text"></p>
+			<p id="title" class="centre_text title"></p>
+			<p id="info" class="centre_text text_right"></p>
+		</span>
+		<span class="width_spacer"></span>
+		<span class="width_team">
+			<p id="team2Score" class="team_text team_score"></p>
+			<p id="team2Name" class="team_text team_right"></p>
+		</span>
+	</div>
+	<script src="script.js"></script>
 </body>
 </html>
