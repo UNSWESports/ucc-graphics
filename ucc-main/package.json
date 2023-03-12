@@ -38,7 +38,12 @@
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "game_overlay/index.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "versus/versus.html",
         "width": 1920,
         "height": 1080
       }
