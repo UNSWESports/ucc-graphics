@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<style>
-		body {
-			font-family: sans-serif;
-		}
-
-		.monospace {
-			font-family: monospace;
-		}
-	</style>
+	<link href="style.css" rel="stylesheet">
 </head>
 <body>
-	<p>
-		Hello, I'm one of the graphics in your bundle!
-		I'm where you put the graphics you want to run in your broadcast software!
-	</p>
+	<div id="overlay" class="overlay" style="transform: translateY(-50vh)">
+		<img src="lol.svg" class="graphic_bg" id="graphic_bg"  data-swapSrc="lol_swap.svg"/>
+		<span style="height: 50vh;"></span>
 
-	<p>To edit me, open "<span id="path" class="monospace"></span>" in your favorite text editor or IDE.</p>
+		<span class="width_info">
+			<p id="title" class="centre_text title"></p>
+		</span>
+		<span class="width_team">
+			<p id="team1Name" class="team_text team_left"></p>
+			<p id="team1Score" class="team_text team_score"></p>
+		</span>
+		
+		<span class="width_spacer"></span>
 
-	<p>You can use any libraries, frameworks, and tools you want. There are no limits.</p>
-
-	<p>Visit <a href="https://nodecg.com" target="_blank" rel="noopener">https://nodecg.com</a> for full documentation.</p>
-
-	<p>Have fun!</p>
-
-	<script>
-		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
-
-		// You can access the NodeCG api anytime from the `window.nodecg` object
-		// Or just `nodecg` for short. Like this!:
-		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
-	</script>
+		<span class="width_team" style="width: 14.5%;">
+			<p id="team2Score" class="team_text team_score"></p>
+			<p id="team2Name" class="team_text team_right"></p>
+		</span>
+		<span class="width_info" style="width: 15.5%;">
+			<div class="vert_flex">
+				<p id="subtitle" class="centre_text text_right"></p>
+				<p id="info" class="centre_text text_right"></p>
+			</div>
+		</span>
+	</div>
+	<div id="overlay_bottom" class="overlay" style="transform: translateY(50vh)">
+		<span style="display: flex; position: absolute; height: 50vh;">
+			<img src="lol.svg" class="graphic_bg_bottom" id="graphic_bg"/>
+		</span>
+	</div>
+	<script src="script.js"></script>
 </body>
 </html>
