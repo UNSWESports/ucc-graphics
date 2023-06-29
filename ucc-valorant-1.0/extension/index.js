@@ -8,5 +8,12 @@ module.exports = function (nodecg) {
 	nodecg.log.info('Visit https://nodecg.com for full documentation.');
 	nodecg.log.info('Good luck!');
 
-	nodecg.sendMessageToBundle('registerOverlay', 'ucc-main', nodecg.bundleName);
+	nodecg.sendMessageToBundle(
+		'registerOverlay', 
+		'ucc-main', 
+		[
+			`Valorant ${nodecg.bundleVersion}`,
+			`${nodecg.bundleName}/graphics/index.html`
+		]
+	);
 };

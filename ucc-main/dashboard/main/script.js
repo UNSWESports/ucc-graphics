@@ -47,8 +47,8 @@ rpc_ucc_overlay_list.on('change', (newValue, oldValue) => {
     input_overlay.innerHTML = "";
     for (let x of newValue) {
         let option = document.createElement("option");
-        option.value = x;
-        option.text = x;
+        option.value = x[1];
+        option.text = x[0];
         input_overlay.add(option);
     }
     input_overlay.value = rpc_ucc_overlay_layout.value;

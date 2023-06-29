@@ -27,14 +27,18 @@
       {
         "name": "ucc-overwatch",
         "title": "UCC Overwatch",
-        "width": 2,
+        "width": 5,
         "file": "ucc-overwatch.html",
         "headerColor": "#525F78"
       }
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "game_overlay/index.html",
+        "width": 1920,
+        "height": 1080
+      },{
+        "file": "team_versus/index.html",
         "width": 1920,
         "height": 1080
       }

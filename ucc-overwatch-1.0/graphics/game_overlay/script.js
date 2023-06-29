@@ -64,8 +64,13 @@ rpc_ucc_team2_score.on('change', (newValue, oldValue) => {
 });
 
 nodecg.listenFor('swap_sides', 'ucc-main', () => {
-    img_graphic_bg.dataset.scalex = parseInt(img_graphic_bg.dataset.scalex) * -1;
-    img_graphic_bg.style.transform = `scaleX(${parseInt(img_graphic_bg.dataset.scalex) * 1})`;
+    let temp_value = text_team1_name.textContent;
+    text_team1_name.textContent = text_team2_name.textContent;
+    text_team2_name.textContent = temp_value;
+
+    temp_value = text_team1_score.textContent;
+    text_team1_score.textContent = text_team2_score.textContent;
+    text_team2_score.textContent = temp_value;
 });
 
 /* NodeCG Updates */
