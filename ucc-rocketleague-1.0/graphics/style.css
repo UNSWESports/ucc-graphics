@@ -1,0 +1,108 @@
+body {
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.graphic_bg {
+    position: absolute;
+    margin: 0;
+    z-index: -1;
+}
+
+.overlay {
+    padding: 0;
+    margin: 0;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    transition: .4s;
+}
+
+.team_text {
+    color: white;
+    font-size: 2.8vh;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -0.75px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.team_score {
+    font-weight: 800;
+    font-size: 4vh;
+    max-width: 15%;
+}
+
+.team_left {
+    margin-left: auto;
+    padding-right: 1vw;
+}
+
+.team_right {
+    margin-right: auto;
+    padding-left: 1vw;
+}
+
+.centre_text {
+    color: white;
+    font-size: 2.25vh;
+    font-weight: 400;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 2.1vh;
+    width: 100%;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text_right {
+    text-align: end;
+    font-size: 2.6vh;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2.6vh;
+    line-height: 2.45vh;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
+}
+
+.vert_flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 0.5vw;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.width_team {
+    display: flex;
+    width: 20.5%;
+    height: 6vh;
+}
+
+.width_spacer {
+    display: flex;
+    width: 29%;
+    height: 6vh;
+}
+
+.width_info {
+    display: flex;
+    width: 15%;
+    height: 8vh;
+    justify-content: space-between;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
