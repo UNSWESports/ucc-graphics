@@ -1,0 +1,45 @@
+{
+  "name": "ucc-counterstrike",
+  "version": "1.0.0",
+  "description": "UNSW Contenders Cup Graphics Package for Counter-Strike",
+  "homepage": "https://unswesports.com.au",
+  "author": {
+    "name": "Xander Gonzaga",
+    "email": "xandergonzaga@hotmail.com",
+    "url": "https://riotline.dev"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "*",
+    "bundleDependencies": {
+      "ucc-main": "^1.0.0"
+    },
+    "dashboardPanels": [
+      {
+        "name": "ucc-cs",
+        "title": "UCC Counter-Strike",
+        "width": 2,
+        "file": "ucc-cs.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "Apache-2.0"
+}
