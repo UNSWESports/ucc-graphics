@@ -2,6 +2,9 @@
     font-family: monospace;
 }
 
+body {
+    background-color: #3f4856;
+}
 
 .score_field {
     width: 15%;
