@@ -12,15 +12,15 @@ const input_subtitle_text = document.querySelector('#eventSecondaryTitleInput');
 const input_overlay_switch = document.querySelector('#showOverlay');
 
 /* NodeCG Replicants */
-const rpc_ucc_overlay_layout = nodecg.Replicant('overlay_layout');
+const rpc_ucc_overlay_layout = nodecg.Replicant('overlay_layout', 'ucc-main');
 
-const rpc_ucc_info_text = nodecg.Replicant('info_text');
-const rpc_ucc_title_text = nodecg.Replicant('title_text');
-const rpc_ucc_subtitle_text = nodecg.Replicant('subtitle_text');
+const rpc_ucc_info_text = nodecg.Replicant('info_text', 'ucc-main');
+const rpc_ucc_title_text = nodecg.Replicant('title_text', 'ucc-main');
+const rpc_ucc_subtitle_text = nodecg.Replicant('subtitle_text', 'ucc-main');
 
-const rpc_ucc_overlay_list = nodecg.Replicant('overlay_list', { defaultValue: [] });
+const rpc_ucc_overlay_list = nodecg.Replicant('overlay_list', 'ucc-main', { defaultValue: [] });
 
-const rpc_ucc_overlay_state = nodecg.Replicant('overlay_state', { defaultValue: false });
+const rpc_ucc_overlay_state = nodecg.Replicant('overlay_state', 'ucc-main', { defaultValue: false });
 
 /* NodeCG Event Listeners */
 rpc_ucc_overlay_layout.on('change', (newValue, oldValue) => {

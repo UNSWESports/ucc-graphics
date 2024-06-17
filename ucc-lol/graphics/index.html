@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<div id="overlay" class="overlay" style="transform: translateY(-50vh)">
+		<img src="lol.svg" class="graphic_bg" id="graphic_bg"  data-swapSrc="lol_swap.svg"/>
+		<span style="height: 50vh;"></span>
+		<span class="width_team">
+			<p id="team1Name" class="team_text team_left"></p>
+			<p id="team1Score" class="team_text team_score"></p>
+		</span>
+		
+		<span class="width_spacer"></span>
+
+		<span class="width_team" style="width: 23.75%;">
+			<p id="team2Score" class="team_text team_score"></p>
+			<p id="team2Name" class="team_text team_right"></p>
+		</span>
+	</div>
+	<div id="overlay_bottom" class="overlay" style="transform: translateY(50vh)">
+		<span style="display: flex; position: absolute; height: 50vh;">
+			<img src="lol.svg" class="graphic_bg_bottom" id="graphic_bg"/>
+		</span>
+		<span class="width_info_new">
+			<div class="vert_flex">
+				<p id="subtitle" class="centre_text"></p>
+				<p id="info" class="centre_text"></p>
+			</div>
+			<p id="title" class="centre_text title"></p>
+		</span>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

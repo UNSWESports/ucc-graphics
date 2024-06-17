@@ -1,0 +1,144 @@
+body {
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.graphic_bg {
+    position: absolute;
+    margin: 0;
+    z-index: -1;
+}
+
+.overlay {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    transition: .4s;
+    flex-direction: column;
+}
+
+.overlaySection {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    transition: .4s;
+}
+
+.map_text {
+    color: white;
+    font-size: 0.85vw;
+    font-weight: 600;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: end;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 0.75vw;
+    margin-right: 0.75vw;
+    width: 85%;
+}
+
+.altTop_text {
+    color: white;
+    font-size: 0.85vw;
+    font-weight: 600;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 0.75vw;
+    margin-right: 0.75vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 85%;
+}
+
+.width_toparea {
+    display: flex;
+    width: 22%;
+    height: 2vh;
+    align-self: center;
+}
+
+.width_topcentre {
+    display: flex;
+    width: 56%;
+}
+
+.team_text {
+    color: white;
+    font-size: 2.25vh;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+}
+
+.team_score {
+    font-weight: 800;
+    font-size: 4vh;
+    max-width: 15%;
+}
+
+.team_left {
+    margin-left: auto;
+    padding-right: 1vw;
+    text-align: end;
+}
+
+.team_right {
+    margin-right: auto;
+    padding-left: 1vw;
+}
+
+.centre_text {
+    color: white;
+    font-size: 2.25vh;
+    font-weight: 400;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+    width: 35%;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text_right {
+    text-align: end;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2.5vh;
+    text-transform: uppercase;
+    text-align: center;
+    width: 30%;
+}
+
+.width_team {
+    display: flex;
+    width: 39%;
+    height: 12.5vh;
+}
+
+.width_spacer {
+    display: flex;
+    width: 4%;
+    height: 5vh;
+}
+
+.width_centre {
+    display: flex;
+    width: 22%;
+    height: 3vh;
+    justify-content: space-between;
+}

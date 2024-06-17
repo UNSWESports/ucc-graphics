@@ -24,13 +24,6 @@
       "ucc-main": "^1.0.0"
     },
     "dashboardPanels": [
-      {
-        "name": "ucc-cs",
-        "title": "UCC Counter-Strike",
-        "width": 2,
-        "file": "ucc-cs.html",
-        "headerColor": "#525F78"
-      }
     ],
     "graphics": [
       {

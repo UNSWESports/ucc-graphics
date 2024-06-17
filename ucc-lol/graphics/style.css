@@ -1,0 +1,145 @@
+body {
+    font-family: 'Manrope', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.graphic_bg {
+    position: absolute;
+    margin: 0;
+    z-index: -1;
+    width: 100vw;
+}
+
+.graphic_bg_bottom {
+    margin: 0;
+    z-index: -1;
+    width: 100vw;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.overlay {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    transition: .4s;
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+}
+
+.overlay:nth-of-type(2) {
+    margin-top: 50vh;
+    height: 50vh;
+}
+
+.team_text {
+    color: white;
+    font-size: 2.5vh;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.team_score {
+    font-weight: 800;
+    font-size: 3.5vh;
+    max-width: 12%;
+    min-width: 8%;
+    margin-left: 0.7vw;
+    margin-right: 0.7vw;
+    text-align: center;
+}
+
+.team_left {
+    margin-left: auto;
+}
+
+.team_right {
+    margin-right: auto;
+}
+
+.vert_flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 0.5vw;
+}
+
+.centre_text {
+    color: white;
+    font-size: 2vh;
+    font-weight: 400;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text_right {
+    text-align: end;
+}
+
+.text_right:nth-of-type(1) {
+    margin-bottom: -0.35vh;
+}
+
+.text_right:nth-of-type(2) {
+    margin-top: -0.35vh;
+}
+
+.title {
+    font-weight: 800;
+    letter-spacing: 0.75px;
+    font-size: 1.3em;
+    margin-right: 0.5vw;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+
+.width_team {
+    display: flex;
+    width: 24.25%;
+    height: 6vh;
+}
+
+.width_spacer {
+    display: flex;
+    width: 52%;
+    height: 6vh;
+}
+
+.width_info {
+    display: flex;
+    width: 15%;
+    height: 6vh;
+    justify-content: space-between;
+}
+
+.width_info_new {
+    display: flex;
+    width: 16%;
+    margin-right: 14.5vw;
+    height: 8.5vh;
+    flex-direction: column;
+}
+
+#overlay_bottom {
+    align-items: flex-end;
+    flex-direction: row-reverse;
+}
+
+#info {
+    margin-top: -8px;
+}

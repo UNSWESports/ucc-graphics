@@ -3,7 +3,7 @@ const div_overlays = document.querySelector('#overlays');
 
 /* NodeCG Replicants */
 const rpc_ucc_overlay_layout = nodecg.Replicant(
-    'overlay_layout'
+    'overlay_layout', 'ucc-main'
 );
 
 /* NodeCG Event Listeners */

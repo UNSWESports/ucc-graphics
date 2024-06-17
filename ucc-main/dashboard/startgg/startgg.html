@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<!-- Settings -->
+	<div class="section">
+		<!-- Overlay Selector -->
+		<button id="reloadButton" class="button">Refresh</button>
+		<br>
+		<div class="flex_sb">
+			<div class="form__group field full_field">
+				<label for="inputTournament" class="form__label">Select Tournament:</label>
+				<select id="inputTournament" class="form__field dropdown">
+				</select>
+			</div>
+		</div>
+		<br>
+		<div class="flex_sb">
+			<div class="form__group field full_field">
+				<label for="inputEvent" class="form__label">Select Event:</label>
+				<select id="inputEvent" class="form__field dropdown"></select>
+			</div>
+		</div>
+		<br>
+		<div class="flex_sb">
+			<div class="form__group field full_field">
+				<label for="inputPhase" class="form__label">Select Phase Group:</label>
+				<select id="inputPhase" class="form__field dropdown"></select>
+			</div>
+		</div>		
+		<br>
+		<div class="flex_sb">
+			<div class="form__group field full_field">
+				<label for="inputMatch" class="form__label">Select Match:</label>
+				<select id="inputMatch" class="form__field dropdown matchDrop"></select>
+			</div>
+		</div>
+		<br>
+		<button id="loadMatchButton" class="button" style="width: fit-content;">Load Match Data</button>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

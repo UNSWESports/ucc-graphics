@@ -1,0 +1,46 @@
+{
+  "name": "arc-valorant-1.0",
+  "version": "1.0.0",
+  "description": "Arc eSports Series Graphics Package for Valorant",
+  "homepage": "",
+  "author": {
+    "name": "Xander Gonzaga",
+    "email": "xandergonzaga@hotmail.com",
+    "url": "https://riotline.dev"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "*",
+    "bundleDependencies": {
+      "ucc-main": "^1.0.0"
+    },
+    "dashboardPanels": [
+      {
+        "name": "arc-valorant",
+        "title": "Arc Valorant",
+        "width": 2,
+        "file": "arc-valorant.html",
+        "headerColor": "#525F78",
+        "workspace": "Arc eSports Series"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "Apache-2.0"
+}

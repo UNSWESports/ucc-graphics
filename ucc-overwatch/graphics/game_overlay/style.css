@@ -1,0 +1,96 @@
+body {
+    font-family: 'Manrope', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.graphic_bg {
+    position: absolute;
+    margin: 0;
+    z-index: -1;
+    width: 100vw;
+}
+
+.overlay {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    transition: .4s;
+    height: 15vh;
+}
+
+.team_text {
+    color: white;
+    font-size: 3vh;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.team_score {
+    font-weight: 800;
+    font-size: 4vh;
+    max-width: 15%;
+}
+
+.team_left {
+    margin-left: auto;
+    padding-right: 1vw;
+}
+
+.team_right {
+    margin-right: auto;
+    padding-left: 1vw;
+}
+
+.centre_text {
+    color: white;
+    font-size: 2.25vh;
+    font-weight: 400;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+
+    width: 35%;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text_right {
+    text-align: end;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2.5vh;
+    text-transform: uppercase;
+    text-align: center;
+    width: 30%;
+}
+
+.width_team {
+    display: flex;
+    width: 26%;
+    height: 5vh;
+    position: relative;
+    top: 0.75vh
+}
+
+.width_spacer {
+    display: flex;
+    width: 3%;
+    height: 5vh;
+}
+
+.width_centre {
+    display: flex;
+    width: 42%;
+    height: 3vh;
+    justify-content: space-between;
+}

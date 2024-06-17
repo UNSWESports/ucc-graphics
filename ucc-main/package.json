@@ -5,7 +5,7 @@
   "homepage": "https://unswesports.com.au",
   "author": {
     "name": "Xander Gonzaga",
-    "email": "xandergonzaga@hotmail.com",
+    "email": "xandergonzaga@gmail.com",
     "url": "https://riotline.dev"
   },
   "files": [
@@ -19,21 +19,31 @@
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "^1.1.1",
+    "compatibleRange": "*",
     "dashboardPanels": [
       {
         "name": "ucc-teams",
         "title": "UCC Match Teams",
         "width": 4,
         "file": "teams/ucc-teams.html",
-        "headerColor": "#525F78"
+        "headerColor": "#525F78",
+        "workspace": "Contenders Cup"
       },
       {
         "name": "ucc-main",
         "title": "UCC Settings",
         "width": 2,
         "file": "main/ucc-main.html",
-        "headerColor": "#525F78"
+        "headerColor": "#525F78",
+        "workspace": "Contenders Cup"
+      },
+      {
+        "name": "ucc-startgg",
+        "title": "UCC StartGG API",
+        "width": 3,
+        "file": "startgg/startgg.html",
+        "headerColor": "#525F78",
+        "workspace": "Contenders Cup"
       }
     ],
     "graphics": [
@@ -49,5 +59,8 @@
       }
     ]
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "axios": "^1.5.1"
+  }
 }

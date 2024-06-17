@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #3f4856;
+    background-color: #2f3a4f;
 }
 
 .score_field {
@@ -17,6 +17,7 @@ body {
 .cs {
     margin-top: auto;
     margin-bottom: auto;
+    color: whitesmoke;
 }
 
 .full_field {
@@ -28,8 +29,8 @@ body {
 }
 
 .section {
-    padding-top: 2%; 
-    padding-bottom: 2%;
+    margin-top: 10px; 
+    margin-bottom: 10px;
 }
 
 .flex_sb {
@@ -46,10 +47,10 @@ body {
     border: none;
     border-radius: 4px;
     text-decoration: none;
-    width: 20%;
-    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: fit-content;
     font-size: 16px;
-    min-width: 5rem;
     min-height: 2.5rem;
     margin: auto;
     display: block;

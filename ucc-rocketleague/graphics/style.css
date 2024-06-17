@@ -1,0 +1,117 @@
+body {
+    font-family: 'Manrope', sans-serif;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.graphic_bg {
+    position: absolute;
+    margin: 0;
+    z-index: -1;
+    width: 100vw;
+}
+
+.overlay {
+    padding: 0;
+    margin: 0;
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    transition: .4s;
+}
+
+.team_text {
+    color: white;
+    font-size: 2.8vh;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: -0.75px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.team_score {
+    font-weight: 800;
+    font-size: 4vh;
+    max-width: 15%;
+    width: 14%;
+    position: relative;
+    text-align: center;
+    top: 0.5vh;
+}
+
+.team_left {
+    margin-left: auto;
+    padding-right: 0.5vw;
+    text-align: right;
+    width: 86%;
+}
+
+.team_right {
+    margin-right: auto;
+    padding-left: 0.5vw;
+    text-align: left;
+    width: 86%;
+}
+
+.centre_text {
+    color: white;
+    font-size: 2.25vh;
+    font-weight: 400;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 2.1vh;
+    width: 100%;
+
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.text_right {
+    text-align: end;
+    font-size: 2.6vh;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2.6vh;
+    line-height: 2.45vh;
+    text-transform: uppercase;
+    text-align: left;
+    width: 100%;
+}
+
+.vert_flex {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 0.5vw;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.width_team {
+    display: flex;
+    width: 24%;
+    height: 6vh;
+    position: relative;
+    top: 1vh;
+}
+
+.width_spacer {
+    display: flex;
+    width: 19%;
+    height: 6vh;
+}
+
+.width_info {
+    display: flex;
+    width: 16.5%;
+    height: 8vh;
+    justify-content: space-between;
+}
