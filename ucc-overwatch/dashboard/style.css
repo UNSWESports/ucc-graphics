@@ -3,7 +3,8 @@
 }
 
 body {
-    margin: 1%;
+    margin: 2%;
+    color: white;
     background-color: #2f3a4f;
 }
 
@@ -25,13 +26,27 @@ body {
     width: 100%;
 }
 
+.divider {
+    align-self: center;
+    height: 1px;
+    width: 80%;
+    background: rgb(93, 93, 93);
+    background: radial-gradient(circle, rgb(93, 93, 93) 0%, rgba(255,255,255,0) 100%);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .dropdown {
     background-color: #2f3a4f !important;
 }
 
 .section {
-    padding-top: 2%; 
-    padding-bottom: 2%;
+    padding-top: 1%; 
+    padding-bottom: 1%;
+}
+
+.gap_15 {
+    gap: 15px;
 }
 
 .team_header {
@@ -42,9 +57,19 @@ body {
     text-align: center;
 }
 
+.section_header {
+    font-size: 1.2em;
+    margin: 0%;
+    margin-bottom: 5px;
+}
+
 .flex_sb {
     display: flex; 
     justify-content: space-between;
+}
+
+.flex {
+    display: flex;
 }
 
 .flex_col_sb {
@@ -53,14 +78,31 @@ body {
     justify-content: space-between;
 }
 
+.width_15pct {
+    width: 15%;
+}
+
 .width_25pct {
     width: 25%;
+}
+
+.width_35pct {
+    width: 35%;
 }
 
 .width_team {
     width: 50%;
     margin-left: 1%;
     margin-right: 1%;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+}
+
+.justify_center {
+    justify-content: center;
 }
 
 .width_70pct {
@@ -85,8 +127,18 @@ body {
     display: block;
 }
 
+.flex_g1 {
+    flex-grow: 1;
+}
+
 .button_lrg {
     min-width: 12rem;
+}
+
+.button_update {
+    margin: 0;
+    height: 2.5rem;
+    width: 35%;
 }
 
 .form__group {

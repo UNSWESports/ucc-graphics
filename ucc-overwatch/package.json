@@ -25,12 +25,20 @@
     },
     "dashboardPanels": [
       {
-        "name": "ucc-overwatch",
-        "title": "UCC Overwatch",
+        "name": "ow-player-list",
+        "title": "Overwatch Player List",
         "width": 5,
-        "file": "ucc-overwatch.html",
+        "file": "ow-player-list.html",
         "headerColor": "#525F78",
-        "workspace": "Contenders Cup"
+        "workspace": "UCC Overwatch"
+      },
+      {
+        "name": "ow-map-bans",
+        "title": "Overwatch Map Bans",
+        "width": 5,
+        "file": "ow-map-bans.html",
+        "headerColor": "#525F78",
+        "workspace": "UCC Overwatch"
       }
     ],
     "graphics": [
@@ -42,6 +50,17 @@
         "file": "team_versus/index.html",
         "width": 1920,
         "height": 1080
+      },{
+        "file": "map_bans/index.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "maps",
+        "title": "Map Ban Images",
+        "allowedTypes": ["jpg", "jpeg", "gif", "png"]
       }
     ]
   }

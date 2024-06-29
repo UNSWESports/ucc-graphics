@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <div class="section flex_col_sb gap_15">
+    <!-- Map 1 -->
+    <div class="flex_col_sb">
+      <p class="section_header">Map 1</p>
+      <div class="flex_sb">
+        <!-- Map Selection -->
+        <div class="form__group field full_field width_35pct">
+          <label for="map1Select" class="form__label">Map/Mode Selection:</label>
+          <select id="map1Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field width_35pct">
+          <input id="map1Text" name="map1Text" class="form__field"></input>
+          <label for="map1Text" class="form__label">Winner / Inner Text:</label>
+        </div>
+        <!-- Active Map -->
+        <div class="form__group field name_field flex_center width_15pct">
+          <label for="map1Active" class="form__label">Active Map:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="map1Active" name="activeMap" value="false" onchange="currentMapHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+
+    <!-- Map 2 -->
+    <div class="flex_col_sb">
+      <p class="section_header">Map 2</p>
+      <div class="flex_sb">
+        <!-- Map Selection -->
+        <div class="form__group field full_field width_35pct">
+          <label for="map2Select" class="form__label">Map/Mode Selection:</label>
+          <select id="map2Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field width_35pct">
+          <input id="map2Text" name="map2Text" class="form__field"></input>
+          <label for="map2Text" class="form__label">Winner / Inner Text:</label>
+        </div>
+        <!-- Active Map -->
+        <div class="form__group field name_field flex_center width_15pct">
+          <label for="map2Active" class="form__label">Active Map:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="map2Active" name="activeMap" value="false" onchange="currentMapHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 3 -->
+    <div class="flex_col_sb">
+      <p class="section_header">Map 3</p>
+      <div class="flex_sb">
+        <!-- Map Selection -->
+        <div class="form__group field full_field width_35pct">
+          <label for="map3Select" class="form__label">Map/Mode Selection:</label>
+          <select id="map3Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field width_35pct">
+          <input id="map3Text" name="map3Text" class="form__field"></input>
+          <label for="map3Text" class="form__label">Winner / Inner Text:</label>
+        </div>
+        <!-- Active Map -->
+        <div class="form__group field name_field flex_center width_15pct">
+          <label for="map3Active" class="form__label">Active Map:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="map3Active" name="activeMap" value="false" onchange="currentMapHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 4 -->
+    <div class="flex_col_sb">
+      <p class="section_header">Map 4</p>
+      <div class="flex_sb">
+        <!-- Map Selection -->
+        <div class="form__group field full_field width_35pct">
+          <label for="map4Select" class="form__label">Map/Mode Selection:</label>
+          <select id="map4Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field width_35pct">
+          <input id="map4Text" name="map4Text" class="form__field"></input>
+          <label for="map4Text" class="form__label">Winner / Inner Text:</label>
+        </div>
+        <!-- Active Map -->
+        <div class="form__group field name_field flex_center width_15pct">
+          <label for="map4Active" class="form__label">Active Map:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="map4Active" name="activeMap" value="false" onchange="currentMapHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 5 -->
+    <div class="flex_col_sb">
+      <p class="section_header">Map 5</p>
+      <div class="flex_sb">
+        <!-- Map Selection -->
+        <div class="form__group field full_field width_35pct">
+          <label for="map5Select" class="form__label">Map/Mode Selection:</label>
+          <select id="map5Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field width_35pct">
+          <input id="map5Text" name="map5Text" class="form__field"></input>
+          <label for="map5Text" class="form__label">Winner / Inner Text:</label>
+        </div>
+        <!-- Active Map -->
+        <div class="form__group field name_field flex_center width_15pct">
+          <label for="map5Active" class="form__label">Active Map:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="map5Active" name="activeMap" value="false" onchange="currentMapHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Settings -->
+    <div class="section flex gap_15">
+      <div class="flex justify_center flex_g1">
+        <button id="updateButton" class="button_update button">Update</button>
+      </div>
+      <div class="width_35pct gap_15 flex_col_sb">
+        <div class="form__group field name_field flex_center">
+          <label for="toggleBo3" class="form__label">Toggle Best of 3:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="toggleBo3" name="toggleBo3" value="false" onchange="bo3Handling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="form__group field name_field flex_center">
+          <label for="toggleVisibility" class="form__label">Toggle Visibility [LIVE]:</label>
+          <label class="switch" style="margin: 0;">
+            <input type="checkbox" id="toggleVisibility" name="toggleVisibility" value="false" onchange="checkboxHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+	<script src="map-script.js"></script>
+</body>
+</html>

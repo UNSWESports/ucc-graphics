@@ -23,11 +23,11 @@
     "dashboardPanels": [
       {
         "name": "ucc-teams",
-        "title": "UCC Match Teams",
+        "title": "UCC Teams",
         "width": 4,
         "file": "teams/ucc-teams.html",
         "headerColor": "#525F78",
-        "workspace": "Contenders Cup"
+        "workspace": "UCC Main"
       },
       {
         "name": "ucc-main",
@@ -35,7 +35,7 @@
         "width": 2,
         "file": "main/ucc-main.html",
         "headerColor": "#525F78",
-        "workspace": "Contenders Cup"
+        "workspace": "UCC Main"
       },
       {
         "name": "ucc-startgg",
@@ -43,7 +43,7 @@
         "width": 3,
         "file": "startgg/startgg.html",
         "headerColor": "#525F78",
-        "workspace": "Contenders Cup"
+        "workspace": "UCC Main"
       }
     ],
     "graphics": [
