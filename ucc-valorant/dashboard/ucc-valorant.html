@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-	<style>
-		.monospace {
-			font-family: monospace;
-		}
-		body {
-			background-color: #2f3a4f;
-		}
-	</style>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<p>
-		Hello, I'm one of the panels in your bundle!
-		I'm where you put your controls.
-	</p>
-
-	<p>To edit me, open "<span id="path" class="monospace"></span>" in your favorite text editor or IDE.</p>
-
-	<p>
-		You can use any libraries, frameworks, and tools you want.
-		The only limit of panels is that they cannot render outside of their
-		<span class="monospace">&lt;iframe&gt;</span>'s bounding box.
-	</p>
-
-	<p>Visit <a href="https://nodecg.com" target="_blank" rel="noopener">https://nodecg.com</a> for full documentation.</p>
-
-	<p>You've got this!</p>
-
+	<div class="flex_sb">
+		<label class="cs">Show Scoreboard Overlay</label>
+		<label class="switch">
+			<input type="checkbox" id="showOverlay" value="false" checked onchange="updateOverlayState(this)">
+			<span class="slider"></span>
+		</label>
+	</div>
 	<script>
-		document.getElementById('path').textContent = `nodecg${window.location.pathname}`;
+		const input_overlay_switch = document.getElementById('showOverlay');
 
-		// You can access the NodeCG api anytime from the `window.nodecg` object
-		// Or just `nodecg` for short. Like this!:
-		nodecg.log.info('Here\'s an example of using NodeCG\'s logging API!');
+		const rpc_gsi_overlay_state = nodecg.Replicant('rpc_gsi_overlay_state', 'ucc-valorant', { defaultValue: false });
+
+		rpc_gsi_overlay_state.on('change', (newValue, oldValue) => {
+			input_overlay_switch.value = newValue;
+		});
+
+		/* Functions */
+		function updateOverlayState(element) {
+			rpc_gsi_overlay_state.value = input_overlay_switch.checked;
+		}
 	</script>
 </body>
 </html>
