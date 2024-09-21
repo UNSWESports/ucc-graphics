@@ -19,6 +19,7 @@ body {
   overflow: hidden;
   transition: .4s;
   transform: translateX(60vw);
+  height: 370px;
 }
 
 .scoreboard.visible {

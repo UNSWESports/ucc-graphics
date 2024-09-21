@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="flex_sb">
+		<label class="cs">Show Agent Select</label>
+		<label class="switch">
+			<input type="checkbox" id="showAgentSelect" value="false" checked onchange="updateOverlayState(this)">
+			<span class="slider"></span>
+		</label>
+	</div>
+	<script>
+		const input_overlay_switch = document.getElementById('showAgentSelect');
+
+		const rpc_gsi_agentSelect_show = nodecg.Replicant('rpc_gsi_agentSelect_show', 'ucc-valorant', { defaultValue: false });
+
+		rpc_gsi_agentSelect_show.on('change', (newValue, oldValue) => {
+			input_overlay_switch.value = newValue;
+		});
+
+		/* Functions */
+		function updateOverlayState(element) {
+			rpc_gsi_agentSelect_show.value = input_overlay_switch.checked;
+		}
+
+	</script>
+</body>
+</html>

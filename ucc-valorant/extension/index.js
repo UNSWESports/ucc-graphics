@@ -1,4 +1,5 @@
 'use strict';
+const { AGENT_MAP, WEAPON_MAP } = require('./gameMaps');
 
 module.exports = function (nodecg) {
 	const router = nodecg.Router();
@@ -6,57 +7,13 @@ module.exports = function (nodecg) {
 		"team_0": [],
 		"team_1": []
 	}
-
-	const AGENT_MAP = {
-		"Clay"			: "Raze",
-		"Pandemic"	: "Viper",
-		"Wraith"		: "Omen",
-		"Hunter"		: "Sova",
-		"Thorne"		: "Sage",
-		"Phoenix"		: "Phoenix",
-		"Wushu"			: "Jett",
-		"Gumshoe"		: "Cypher",
-		"Sarge"			: "Brimstone",
-		"Breach"		: "Breach",
-		"Vampire"		: "Reyna",
-		"Killjoy"		: "Killjoy",
-		"Guide"			: "Skye",
-		"Stealth"		: "Yoru",
-		"Rift"			: "Astra",
-		"Grenadier"	: "KAYO",
-		"Deadeye"		: "Chamber",
-		"Sprinter"	: "Neon",
-		"BountyHunter": "Fade",
-		"Mage"			: "Harbor",
-		"Aggrobot"	: "Gekko",
-		"Cable"			: "Deadlock",
-		"Sequoia"		: "Iso",
-		"Smonk"			: "Clove",
-		"Nox"				: "Vyse"
+	const team_roster = {
+		"team_0": [],
+		"team_1": []
 	}
+	let lockMoney = false;
 
-	const WEAPON_MAP = {
-		"TX_Hud_Pistol_Classic"				: "Classic",
-		"TX_Hud_Pistol_Slim"					: "Shorty",
-		"TX_Hud_Pistol_AutoPistol"		: "Frenzy",
-		"TX_Hud_Pistol_Luger"					: "Ghost",
-		"TX_Hud_Pistol_Sheriff"				: "Sheriff",
-		"TX_Hud_Shotguns_Pump"				: "Bucky",
-		"TX_Hud_Shotguns_Persuader"		: "Judge",
-		"TX_Hud_SMGs_Vector"					: "Stinger",
-		"TX_Hud_SMGs_Ninja"						: "Spectre",
-		"TX_Hud_Rifles_Burst"					: "Bulldog",
-		"TX_Hud_Rifles_DMR"						: "Guardian",
-		"TX_Hud_Rifles_Ghost"					: "Phantom",
-		"TX_Hud_Rifles_Volcano"				: "Vandal",
-		"TX_Hud_Sniper_Bolt"					: "Marshal",
-		"TX_Hud_Sniper_Operater"			: "Operator",
-		"TX_Hud_Sniper_DoubleSniper"	: "Outlaw",
-		"TX_Hud_LMG"									:	"Ares",
-		"TX_Hud_HMG"									:	"Odin",
-		"knife"												: "Knife"
-	};
-
+	// NodeCG Replicants
 	const rpc_ucc_valtest = nodecg.Replicant('rpc_ucc_valtest');
 	const rpc_gsi_roundNo = nodecg.Replicant('val_roundNo', { 
 		defaultValue: -1
@@ -81,14 +38,36 @@ module.exports = function (nodecg) {
 			"scoreboard_9": {"credits": 0, "delta": 0}
 		}
 	});
-	let lockMoney = false;
-
+	const rpc_gsi_overlay_auto = nodecg.Replicant('rpc_gsi_overlay_auto', 'ucc-valorant', { defaultValue: true });
+	const rpc_gsi_overlay_state = nodecg.Replicant('rpc_gsi_overlay_state', 'ucc-valorant', { defaultValue: false });
+	const rpc_gsi_agentSelect_data = nodecg.Replicant('rpc_gsi_agentSelect_data', 'ucc-valorant', { defaultValue: {
+		"team_0": [],
+		"team_1": []
+	} });
 
 	// v1 - Initial implementation using REST API
 	// Move to WebSocket later for better continuous updates
 	router.post('/api/gameStats', (req, res) => {
 		const gameStatsJSON = req.body;
 		rpc_ucc_valtest.value = req.body;
+
+		if (gameStatsJSON.hasOwnProperty("info")
+		 && gameStatsJSON["feature"] == "game_info"
+		 && gameStatsJSON["game_info"].hasOwnProperty("scene"))
+		{
+			// Agent Select
+			if (gameStatsJSON["game_info"]["scene"] == "CharacterSelectPersistentLevel") {
+				// Reset Scoreboard and Roster Data
+				team_scoreboard["team_0"] = [];
+				team_scoreboard["team_1"] = [];
+				team_roster["team_0"] = [];
+				team_roster["team_1"] = [];
+				rpc_gsi_agentSelect_data.value = {
+					"team_0": [],
+					"team_1": []
+				};
+			}
+		}
 
 		if (gameStatsJSON.hasOwnProperty("info") 
 		 && gameStatsJSON["feature"] == "match_info") 
@@ -108,7 +87,15 @@ module.exports = function (nodecg) {
 				} else if (gameMatchInfo["round_phase"] == "shopping") {
 					setTimeout(() => {
 						lockMoney = true;
+						// Auto Show Overlay Check
+						if (rpc_gsi_overlay_auto.value) {
+							rpc_gsi_overlay_state.value = true;
+						}
 					}, 500);
+				} else if (gameMatchInfo["round_phase"] == "combat") {
+					if (rpc_gsi_overlay_auto.value) {
+						rpc_gsi_overlay_state.value = false;
+					}
 				}
 			} else if (scoreboardArray !== undefined && scoreboardArray.length > 0) { 
 				for (let scoreboardObj of scoreboardArray) {
@@ -161,8 +148,14 @@ module.exports = function (nodecg) {
 			} else if (rosterArray !== undefined && rosterArray.length > 0) {
 				// Update roster data
 				for (let roster of rosterArray) {
-					console.log(gameMatchInfo[roster]);
+					const playerData = JSON.parse(gameMatchInfo[roster]);
+					const playerTeam = team_roster[`team_${playerData["team"]}`];
+					playerData["character"] = AGENT_MAP[playerData["character"]];
+					playerData['rawIndex'] = roster;
+					playerData["name"] = playerData["name"].replace(/#.{3,5}$/g, "");
+					playerTeam.push(playerData);
 				}
+				rpc_gsi_agentSelect_data.value = team_roster;
 			}
 		}
 

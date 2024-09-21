@@ -12,18 +12,33 @@
 			<span class="slider"></span>
 		</label>
 	</div>
+	<div class="flex_sb">
+		<label class="cs">Auto Show/Hide on Round Start</label>
+		<label class="switch">
+			<input type="checkbox" id="autoOverlay" value="false" checked onchange="updateAutoOverlay(this)">
+			<span class="slider"></span>
+		</label>
+	</div>
 	<script>
 		const input_overlay_switch = document.getElementById('showOverlay');
+		const input_autoOverlay_switch = document.getElementById('autoOverlay');
 
 		const rpc_gsi_overlay_state = nodecg.Replicant('rpc_gsi_overlay_state', 'ucc-valorant', { defaultValue: false });
+		const rpc_gsi_overlay_auto = nodecg.Replicant('rpc_gsi_overlay_auto', 'ucc-valorant', { defaultValue: true });
 
 		rpc_gsi_overlay_state.on('change', (newValue, oldValue) => {
 			input_overlay_switch.value = newValue;
+		});
+		rpc_gsi_overlay_auto.on('change', (newValue, oldValue) => {
+			input_autoOverlay_switch.value = newValue;
 		});
 
 		/* Functions */
 		function updateOverlayState(element) {
 			rpc_gsi_overlay_state.value = input_overlay_switch.checked;
+		}
+		function updateAutoOverlay(element) {
+			rpc_gsi_overlay_auto.value = input_autoOverlay_switch.checked;
 		}
 	</script>
 </body>

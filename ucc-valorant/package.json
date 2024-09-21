@@ -1,6 +1,6 @@
 {
   "name": "ucc-valorant",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "UNSW Contenders Cup Graphics Package for Valorant",
   "homepage": "https://unswesports.com.au",
   "author": {
@@ -25,10 +25,17 @@
     },
     "dashboardPanels": [
         {
-          "name": "ucc-valorant",
-          "title": "UCC Valorant",
-          "width": 4,
+          "name": "ucc-valorant-scoreboard",
+          "title": "VALORANT Scoreboard",
+          "width": 3,
           "file": "ucc-valorant.html",
+          "headerColor": "#525F78",
+          "workspace": "UCC Valorant"
+        },{
+          "name": "ucc-valorant-agentselect",
+          "title": "VALORANT Agent Select",
+          "width": 3,
+          "file": "agentSelect.html",
           "headerColor": "#525F78",
           "workspace": "UCC Valorant"
         }
@@ -41,6 +48,11 @@
       },
       {
         "file": "scoreboard/index.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "agentSelect/index.html",
         "width": 1920,
         "height": 1080
       }

@@ -38,7 +38,7 @@ rpc_gsi_creditDeltas.on('change', (newValue, oldValue) => {
     playerGroup.getElementsByClassName("delta")[0].style.display = 
       parseInt(creditObj["delta"]) < 0 ? "block" : "none";
     playerGroup.getElementsByClassName("delta")[0].textContent = creditObj["delta"];
-    playerGroup.getElementsByClassName("current")[0].textContent = creditObj["credits"];
+    // playerGroup.getElementsByClassName("current")[0].textContent = creditObj["credits"];
   }
 
   console.log(JSON.stringify(newValue));
@@ -61,12 +61,12 @@ const updateIndividual = (data, team, playerIndex) => {
   const scoreboard_side = team === 'team_1' ? left_scoreboard : right_scoreboard;
   const playerGroup = scoreboard_side.getElementsByClassName("player")[playerIndex];
   playerGroup.dataset.rawIndex = scoreboardObj["rawIndex"];
-  playerGroup.getElementsByClassName("agentIcon")[0].src = `./graphics/agents/${scoreboardObj["character"]}.webp`;
+  playerGroup.getElementsByClassName("agentIcon")[0].src = `../assets/agents/${scoreboardObj["character"]}.webp`;
   playerGroup.getElementsByClassName("name")[0].textContent = scoreboardObj["name"];
   playerGroup.getElementsByClassName("kda")[0].textContent = 
     `${scoreboardObj["kills"]}/${scoreboardObj["deaths"]}/${scoreboardObj["assists"]}`;
   playerGroup.getElementsByClassName("loadout")[0].children[0].src = 
-    `./graphics/loadout/${scoreboardObj["weapon"]}.webp`;
+    `../assets/loadout/${scoreboardObj["weapon"]}.webp`;
   playerGroup.getElementsByClassName("current")[0].textContent = scoreboardObj["money"];
 
   const ultDiamonds = playerGroup.getElementsByClassName("ultimate")[0].children;
