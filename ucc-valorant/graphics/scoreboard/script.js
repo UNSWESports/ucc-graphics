@@ -17,6 +17,7 @@ rpc_gsi_scoreboard.on('change', (newValue, oldValue) => {
   for (let i = 0; i < Object.keys(newValue).length; i++) {
     updateSide(newValue, 0);
     updateSide(newValue, 1);
+    console.log(newValue);
     // updateIndividual(newValue, Object.keys(newValue)[i]);
   }
 });
@@ -55,9 +56,9 @@ const updateSide = (data, team) => {
 }
 
 const updateIndividual = (data, team, playerIndex) => {
-  console.log(team);
+  // console.log(team);
   const scoreboardObj = data[team][playerIndex];
-  console.log(scoreboardObj);
+  // console.log(scoreboardObj);
   const scoreboard_side = team === 'team_1' ? left_scoreboard : right_scoreboard;
   const playerGroup = scoreboard_side.getElementsByClassName("player")[playerIndex];
   playerGroup.dataset.rawIndex = scoreboardObj["rawIndex"];

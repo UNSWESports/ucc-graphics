@@ -50,30 +50,26 @@ rpc_gsi_agentSelect_data.on('change', (newValue, oldValue) => {
       const playerGroup = leftTeam.getElementsByClassName('player')[player];
       const playerData = newValue["team_1"][player];
 
-      playerGroup.dataset.rosterId = playerData["rawIndex"];
-
       const agentIcon = playerGroup.getElementsByClassName('agent_icon')[0];
       if (playerData["character"] === undefined || playerData["character"] === "") {
         agentIcon.src = `../assets/agents/unknown.webp`;
       } else {
         agentIcon.src = `../assets/agents/${playerData["character"]}.webp`;
       }
-      agentIcon.style = playerData["locked"] ? "filter: grayscale(0%);" : "filter: grayscale(100%);";
+      agentIcon.style = playerData["locked"] ? "filter: grayscale(0%) brightness(1.0);" : "filter: grayscale(100%) brightness(0.5);";
       playerGroup.getElementsByClassName('player_name')[0].innerText = playerData["name"];
     }
     for (let player in newValue["team_0"]) {
       const playerGroup = rightTeam.getElementsByClassName('player')[player];
       const playerData = newValue["team_0"][player];
 
-      playerGroup.dataset.rosterId = playerData["rawIndex"];
-
       const agentIcon = playerGroup.getElementsByClassName('agent_icon')[0];
       if (playerData["character"] === undefined || playerData["character"] === "") {
         agentIcon.src = `../assets/agents/unknown.webp`;
       } else {
         agentIcon.src = `../assets/agents/${playerData["character"]}.webp`;
       }
-      agentIcon.style = playerData["locked"] ? "filter: grayscale(0%);" : "filter: grayscale(100%);";
+      agentIcon.style = playerData["locked"] ? "filter: grayscale(0%) brightness(1.0);" : "filter: grayscale(100%) brightness(0.5);";
       playerGroup.getElementsByClassName('player_name')[0].innerText = playerData["name"];
     }
   }
@@ -106,6 +102,7 @@ function hideAgentSelect(){
   setTimeout(() => {
     document.getElementById("left_side").style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 0 0 100%);"
     document.getElementById("right_side").style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 100% 0 0);"
+    document.getElementsByClassName('divider')[0].style = "opacity: 0";
     teamNames[0].style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 0 0 100%);"
     teamNames[1].style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 100% 0 0);"
   }, 300);
@@ -115,13 +112,14 @@ function showAgentSelect(){
   const leftPlayerDivs = leftTeam.getElementsByClassName('player');
   const rightPlayerDivs = rightTeam.getElementsByClassName('player');
   const teamNames = document.getElementsByClassName('team_name');
+  document.getElementsByClassName('divider')[0].style = "opacity: 1";
   document.getElementById("left_side").style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 0 0 30%);"
   document.getElementById("right_side").style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 30% 0 0);"
   teamNames[0].style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 0 0 0);"
   teamNames[1].style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 0 0 0);"
 
   setTimeout(() => {
-    document.getElementById('agentSelect_img').style = 'transition: all 600ms ease-in-out; transform: translateY(0%);';
+    document.getElementById('agentSelect_img').style = 'transition: all 600ms ease-in-out; transform: translateY(100%);';
   }, 500);
 
   // Different Directions for the Drop Down Animation

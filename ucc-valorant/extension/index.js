@@ -56,10 +56,12 @@ module.exports = function (nodecg) {
 		 && gameStatsJSON["game_info"].hasOwnProperty("scene"))
 		{
 			// Agent Select
-			if (gameStatsJSON["game_info"]["scene"] == "CharacterSelectPersistentLevel") {
+			if (gameStatsJSON["game_info"]["scene"] === "CharacterSelectPersistentLevel") {
+				console.log("Agent Select - Resetting Scoreboard and Roster Data");
 				// Reset Scoreboard and Roster Data
 				team_scoreboard["team_0"] = [];
 				team_scoreboard["team_1"] = [];
+
 				team_roster["team_0"] = [];
 				team_roster["team_1"] = [];
 				rpc_gsi_agentSelect_data.value = {
@@ -153,7 +155,13 @@ module.exports = function (nodecg) {
 					playerData["character"] = AGENT_MAP[playerData["character"]];
 					playerData['rawIndex'] = roster;
 					playerData["name"] = playerData["name"].replace(/#.{3,5}$/g, "");
-					playerTeam.push(playerData);
+
+					let teamIndex = playerTeam.findIndex(p => p["rawIndex"] === roster);
+					if (teamIndex !== -1) {
+						playerTeam[teamIndex] = playerData;
+					} else {
+						playerTeam.push(playerData);
+					}
 				}
 				rpc_gsi_agentSelect_data.value = team_roster;
 			}
