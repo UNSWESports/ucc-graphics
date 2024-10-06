@@ -38,7 +38,7 @@ rpc_ucc_info_text.on('change', (newValue, oldValue) => {
 rpc_ucc_overlay_state.on('change', (newValue, oldValue) => {
     div_overlay.dataset.state = newValue;
     if (newValue) div_overlay.style.transform = "translateY(0)";
-    else div_overlay.style.transform = "translateY(-100vh)";
+    else div_overlay.style.transform = "translateY(-15vh)";
 });
 
 rpc_ucc_title_text.on('change', (newValue, oldValue) => {

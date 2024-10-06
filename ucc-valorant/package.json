@@ -1,6 +1,6 @@
 {
   "name": "ucc-valorant",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "UNSW Contenders Cup Graphics Package for Valorant",
   "homepage": "https://unswesports.com.au",
   "author": {
@@ -24,21 +24,22 @@
       "ucc-main": "^1.0.0"
     },
     "dashboardPanels": [
-        {
-          "name": "ucc-valorant-scoreboard",
-          "title": "VALORANT Scoreboard",
-          "width": 3,
-          "file": "ucc-valorant.html",
-          "headerColor": "#525F78",
-          "workspace": "UCC Valorant"
-        },{
-          "name": "ucc-valorant-agentselect",
-          "title": "VALORANT Agent Select",
-          "width": 3,
-          "file": "agentSelect.html",
-          "headerColor": "#525F78",
-          "workspace": "UCC Valorant"
-        }
+      {
+        "name": "ucc-valorant-scoreboard",
+        "title": "VALORANT Scoreboard",
+        "width": 3,
+        "file": "ucc-valorant.html",
+        "headerColor": "#525F78",
+        "workspace": "UCC Valorant"
+      },
+      {
+        "name": "ucc-valorant-agentselect",
+        "title": "VALORANT Agent Select",
+        "width": 3,
+        "file": "agentSelect.html",
+        "headerColor": "#525F78",
+        "workspace": "UCC Valorant"
+      }
     ],
     "graphics": [
       {
@@ -59,5 +60,7 @@
     ]
   },
   "repository": "https://github.com/nodecg/nodecg.git",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+  }
 }

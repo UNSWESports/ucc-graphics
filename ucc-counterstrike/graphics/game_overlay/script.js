@@ -13,9 +13,6 @@ const img_graphic_bg = document.querySelector('#graphic_bg');
 
 const div_overlay = document.querySelector('#overlay');
 
-const text_literal = document.querySelector('#literalText');
-
-
 /* NodeCG Replicants */
 const rpc_ucc_info_text = nodecg.Replicant('info_text', 'ucc-main');
 const rpc_ucc_title_text = nodecg.Replicant('title_text', 'ucc-main');
@@ -33,14 +30,7 @@ const rpc_ucc_overlay_state = nodecg.Replicant(
     { defaultValue: false }
 );
 
-const rpc_ucc_cs_text = nodecg.Replicant('literal_text', 'ucc-counterstrike');
-
 /* NodeCG Event Listeners */
-rpc_ucc_cs_text.on('change', (newValue, oldValue) => {
-    text_literal.innerHTML = newValue;
-});
-
-
 rpc_ucc_info_text.on('change', (newValue, oldValue) => {
     text_info.textContent = newValue;
 });
@@ -74,8 +64,13 @@ rpc_ucc_team2_score.on('change', (newValue, oldValue) => {
 });
 
 nodecg.listenFor('swap_sides', 'ucc-main', () => {
-    img_graphic_bg.dataset.scalex = parseInt(img_graphic_bg.dataset.scalex) * -1;
-    img_graphic_bg.style.transform = `scaleX(${parseInt(img_graphic_bg.dataset.scalex) * 1})`;
+    let temp_value = text_team1_name.textContent;
+    text_team1_name.textContent = text_team2_name.textContent;
+    text_team2_name.textContent = temp_value;
+
+    temp_value = text_team1_score.textContent;
+    text_team1_score.textContent = text_team2_score.textContent;
+    text_team2_score.textContent = temp_value;
 });
 
 /* NodeCG Updates */

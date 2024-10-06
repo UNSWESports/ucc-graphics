@@ -24,6 +24,9 @@ module.exports = function (nodecg) {
 	const rpc_gsi_scoreboard = nodecg.Replicant('val_scoreboard', {
 		defaultValue: team_scoreboard
 	});
+	const rpc_gsi_scores = nodecg.Replicant('val_scores', {
+		defaultValue: { "team_0": 0, "team_1": 0 }
+	});
 	const rpc_gsi_creditDeltas = nodecg.Replicant('val_creditDeltas', {
 		defaultValue: {
 			"scoreboard_0": {"credits": 0, "delta": 0},
@@ -48,16 +51,16 @@ module.exports = function (nodecg) {
 	// v1 - Initial implementation using REST API
 	// Move to WebSocket later for better continuous updates
 	router.post('/api/gameStats', (req, res) => {
+		console.log(`VALORANT GSI: ${JSON.stringify(req.body)}`);
 		const gameStatsJSON = req.body;
 		rpc_ucc_valtest.value = req.body;
 
-		if (gameStatsJSON.hasOwnProperty("info")
-		 && gameStatsJSON["feature"] == "game_info"
-		 && gameStatsJSON["game_info"].hasOwnProperty("scene"))
-		{
+		if (!gameStatsJSON.hasOwnProperty("event")) return res.sendStatus(400);
+
+		if (gameStatsJSON["event"] == "scene") {
 			// Agent Select
-			if (gameStatsJSON["game_info"]["scene"] === "CharacterSelectPersistentLevel") {
-				console.log("Agent Select - Resetting Scoreboard and Roster Data");
+			if (gameStatsJSON["data"] === "CharacterSelectPersistentLevel") {
+				console.log("Agent Select Started - Resetting Scoreboard and Roster Data");
 				// Reset Scoreboard and Roster Data
 				team_scoreboard["team_0"] = [];
 				team_scoreboard["team_1"] = [];
@@ -68,103 +71,122 @@ module.exports = function (nodecg) {
 					"team_0": [],
 					"team_1": []
 				};
+				rpc_gsi_scores.value = { "team_0": 0, "team_1": 0 };
 			}
 		}
 
-		if (gameStatsJSON.hasOwnProperty("info") 
-		 && gameStatsJSON["feature"] == "match_info") 
-		{
-			const gameMatchInfo = gameStatsJSON["info"]["match_info"];
-			const scoreboardArray = Object.keys(gameMatchInfo).filter(k => k.startsWith("scoreboard_"));
-			const rosterArray = Object.keys(gameMatchInfo).filter(k => k.startsWith("roster_"));
+		if (gameStatsJSON["event"] == "scoreboard") {
+			const scoreboardData = JSON.parse(gameStatsJSON["data"]);
+			const playerIndex = parseInt(gameStatsJSON["eventIndex"]);
 
-			if (gameMatchInfo.hasOwnProperty("round_number")) {
-				rpc_gsi_roundNo.value = gameMatchInfo["round_number"];
-			} else if (gameMatchInfo.hasOwnProperty("round_phase")) {
-				rpc_gsi_roundPhase.value = gameMatchInfo["round_phase"];
+			scoreboardData["character"] = AGENT_MAP[scoreboardData["character"]];
+			scoreboardData["name"] = scoreboardData["name"].replace(/#.{3,5}$/g, "");
+			scoreboardData["weapon"] = WEAPON_MAP[scoreboardData["weapon"]];
+			scoreboardData["ultPoints"] = scoreboardData["ult_points"];
+			scoreboardData["ultMax"] = scoreboardData["ult_max"];
+			scoreboardData["rawIndex"] = `scoreboard_${playerIndex}`;
 
-				// Handle locking start of round credits count
-				if (gameMatchInfo["round_phase"] == "end") {
-					lockMoney = false;
-				} else if (gameMatchInfo["round_phase"] == "shopping") {
-					setTimeout(() => {
-						lockMoney = true;
-						// Auto Show Overlay Check
-						if (rpc_gsi_overlay_auto.value) {
-							rpc_gsi_overlay_state.value = true;
-						}
-					}, 500);
-				} else if (gameMatchInfo["round_phase"] == "combat") {
-					if (rpc_gsi_overlay_auto.value) {
-						rpc_gsi_overlay_state.value = false;
-					}
+			const playerTeam = team_scoreboard[`team_${scoreboardData["team"]}`];
+
+			// Start of Round Credits and Delta Handling
+			if (rpc_gsi_roundPhase.value == "shopping") {
+				const currentMap = rpc_gsi_creditDeltas.value;
+
+				if (currentMap[scoreboardData["rawIndex"]] === undefined) {
+					currentMap[scoreboardData["rawIndex"]] = {"credits": -1, "delta": 0};
 				}
-			} else if (scoreboardArray !== undefined && scoreboardArray.length > 0) { 
-				for (let scoreboardObj of scoreboardArray) {
-					const playerScoreboard = JSON.parse(gameMatchInfo[scoreboardObj]);
-					// Update player data
-					playerScoreboard["character"] = AGENT_MAP[playerScoreboard["character"]];
-					playerScoreboard["name"] = playerScoreboard["name"].replace(/#.{3,5}$/g, "");
-					playerScoreboard["weapon"] = WEAPON_MAP[playerScoreboard["weapon"]];
-					playerScoreboard["ultPoints"] = playerScoreboard["ult_points"];
-					playerScoreboard["ultMax"] = playerScoreboard["ult_max"];
-					playerScoreboard["rawIndex"] = scoreboardObj;
-					
-					const playerTeam = team_scoreboard[`team_${playerScoreboard["team"]}`];
-					
-					// Start of Round Credits and Delta Handling
-					if (rpc_gsi_roundPhase.value == "shopping") {
-						const currentMap = rpc_gsi_creditDeltas.value;
 
-						if (currentMap[scoreboardObj] === undefined) {
-							currentMap[scoreboardObj] = {"credits": -1, "delta": 0};
-						}
+				if (!lockMoney) {
+					currentMap[scoreboardData["rawIndex"]]["credits"] = scoreboardData["money"];
+				}
 
-						if (!lockMoney) {
-							currentMap[scoreboardObj]["credits"] = playerScoreboard["money"];
-						}
+				currentMap[scoreboardData["rawIndex"]]["delta"] = 
+					parseInt(scoreboardData["money"]) 
+						- parseInt(currentMap[scoreboardData["rawIndex"]]["credits"]);
 
-						currentMap[scoreboardObj]["delta"] = 
-							parseInt(playerScoreboard["money"]) 
-								- parseInt(currentMap[scoreboardObj]["credits"]);
+				rpc_gsi_creditDeltas.value = currentMap;
 
-						rpc_gsi_creditDeltas.value = currentMap;
-
-						// Update scoreboard replicant
-						let isExist = false;
-						for (let playerI in playerTeam) {
-							if (playerTeam[playerI]["rawIndex"] === scoreboardObj) {
-								playerTeam[playerI] = playerScoreboard;
-								isExist = true;
-							}
-						}
-
-						if (!isExist) {
-							playerTeam.push(playerScoreboard);
-						}
+				// Update scoreboard replicant
+				let isExist = false;
+				for (let playerI in playerTeam) {
+					if (playerTeam[playerI]["rawIndex"] === scoreboardData["rawIndex"]) {
+						playerTeam[playerI] = scoreboardData;
+						isExist = true;
+						break;
 					}
 				}
 
-				rpc_gsi_scoreboard.value = team_scoreboard;
-				console.log(JSON.stringify(team_scoreboard));
-			} else if (rosterArray !== undefined && rosterArray.length > 0) {
-				// Update roster data
-				for (let roster of rosterArray) {
-					const playerData = JSON.parse(gameMatchInfo[roster]);
-					const playerTeam = team_roster[`team_${playerData["team"]}`];
-					playerData["character"] = AGENT_MAP[playerData["character"]];
-					playerData['rawIndex'] = roster;
-					playerData["name"] = playerData["name"].replace(/#.{3,5}$/g, "");
-
-					let teamIndex = playerTeam.findIndex(p => p["rawIndex"] === roster);
-					if (teamIndex !== -1) {
-						playerTeam[teamIndex] = playerData;
-					} else {
-						playerTeam.push(playerData);
-					}
+				if (!isExist) {
+					playerTeam.push(scoreboardData);
 				}
-				rpc_gsi_agentSelect_data.value = team_roster;
 			}
+
+			rpc_gsi_scoreboard.value = team_scoreboard;
+		}
+
+		if (gameStatsJSON["event"] == "roster") {
+			const rosterData = JSON.parse(gameStatsJSON["data"]);
+			const playerIndex = parseInt(gameStatsJSON["eventIndex"]);
+
+			rosterData["character"] = AGENT_MAP[rosterData["character"]];
+			rosterData["name"] = rosterData["name"].replace(/#.{3,5}$/g, "");
+			rosterData["rawIndex"] = `roster_${playerIndex}`;
+
+			const playerTeam = team_roster[`team_${rosterData["team"]}`];
+			let teamIndex = playerTeam.findIndex(p => p["rawIndex"] === `roster_${playerIndex}`);
+			if (teamIndex !== -1) {
+				playerTeam[teamIndex] = rosterData;
+			} else {
+				playerTeam.push(rosterData);
+			}
+			rpc_gsi_agentSelect_data.value = team_roster;
+		}
+
+		if (gameStatsJSON["event"] == "round_phase") {
+			rpc_gsi_roundPhase.value = gameStatsJSON["data"];
+
+			// Handle locking start of round credits count
+			if (rpc_gsi_roundPhase.value == "end") {
+				lockMoney = false;
+			} else if (rpc_gsi_roundPhase.value == "shopping") {
+				setTimeout(() => {
+					lockMoney = true;
+					// Auto Show Overlay Check
+					if (rpc_gsi_overlay_auto.value) {
+						rpc_gsi_overlay_state.value = true;
+					}
+				}, 500);
+			} else if (rpc_gsi_roundPhase.value == "combat") {
+				if (rpc_gsi_overlay_auto.value) {
+					rpc_gsi_overlay_state.value = false;
+				}
+			} 
+		}
+
+		if (gameStatsJSON["event"] == "match_score") {
+			const oldScores = rpc_gsi_scores.value;
+			const newScores = JSON.parse(gameStatsJSON["data"]);
+			newScores["team_0"] = parseInt(newScores["team_0"]);
+			newScores["team_1"] = parseInt(newScores["team_1"]);
+
+			let winner;
+
+			if (newScores["team_1"] > oldScores["team_1"]) {
+				// Team 1 (Left) Scored
+				winner = 1;
+			} else if (newScores["team_0"] > oldScores["team_0"]) {
+				// Team 0 (Right) Scored
+				winner = 0;
+			}
+
+			rpc_gsi_scores.value = JSON.parse(gameStatsJSON["data"]);
+			nodecg.sendMessage('roundOutcome', {
+				"team":	winner
+			});
+		}
+
+		if (gameStatsJSON["event"] == "round_number") {
+			rpc_gsi_roundNo.value = parseInt(gameStatsJSON["data"]);
 		}
 
 		res.sendStatus(200);

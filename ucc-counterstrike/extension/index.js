@@ -44,7 +44,7 @@ module.exports = function (nodecg) {
 		'ucc-main', 
 		[
 			`Counter Strike ${nodecg.bundleVersion}`,
-			`${nodecg.bundleName}/graphics/index.html`
+			`${nodecg.bundleName}/graphics/game_overlay/index.html`
 		]
 	);
 

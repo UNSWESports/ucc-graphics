@@ -1,6 +1,7 @@
 /* Element Constants */
 const btn_update = document.querySelector('#updateButton');
 const btn_swap_sides = document.querySelector('#swapSidesButton');
+const btn_swap_names = document.querySelector('#swapNamesButton');
 
 const input_team1_name = document.querySelector('#team1NameInput');
 const input_team1_score = document.querySelector('#team1ScoreInput');
@@ -44,4 +45,18 @@ btn_swap_sides.onclick = () => {
     // so that any specific games can have their own
     // ways of swapping sides
     nodecg.sendMessage('swap_sides');
+};
+
+btn_swap_names.onclick = () => {
+    rpc_ucc_team1_name.value = input_team2_name.value;
+    rpc_ucc_team2_name.value = input_team1_name.value;
+
+    input_team1_name.value = rpc_ucc_team1_name.value;
+    input_team2_name.value = rpc_ucc_team2_name.value;
+
+    rpc_ucc_team1_score.value = input_team2_score.value;
+    rpc_ucc_team2_score.value = input_team1_score.value;
+    
+    input_team1_score.value = rpc_ucc_team1_score.value;
+    input_team2_score.value = rpc_ucc_team2_score.value;
 };

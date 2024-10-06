@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
 body {
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Manrope', sans-serif;
     padding: 0;
     margin: 0;
     overflow: hidden;
-    /* background-image: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 90%), url("/backgrounds/de_dust2.jpg"); */
 }
 
 .graphic_bg {
     position: absolute;
     margin: 0;
     z-index: -1;
+    width: 100vw;
 }
 
 .overlay {
@@ -18,11 +20,12 @@ body {
     overflow: hidden;
     display: flex;
     transition: .4s;
+    height: 15vh;
 }
 
 .team_text {
     color: white;
-    font-size: 3vh;
+    font-size: 2.25vh;
     text-overflow: clip;
     white-space: nowrap;
     overflow: hidden;
@@ -75,19 +78,21 @@ body {
 
 .width_team {
     display: flex;
-    width: 20%;
+    width: 18%;
     height: 5vh;
+    position: relative;
+    top: 0.75vh
 }
 
 .width_spacer {
     display: flex;
-    width: 4%;
+    width: 14%;
     height: 5vh;
 }
 
 .width_centre {
     display: flex;
-    width: 52%;
+    width: 36%;
     height: 3vh;
     justify-content: space-between;
 }

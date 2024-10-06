@@ -1,6 +1,6 @@
 {
   "name": "ucc-counterstrike",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "UNSW Contenders Cup Graphics Package for Counter-Strike",
   "homepage": "https://unswesports.com.au",
   "author": {
@@ -27,7 +27,7 @@
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "game_overlay/index.html",
         "width": 1920,
         "height": 1080
       }
