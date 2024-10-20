@@ -19,6 +19,9 @@
 			<span class="slider"></span>
 		</label>
 	</div>
+	<div class="flex_sb">
+		<button id="resetButton" class="button" onclick="resetScoreboard(this)">Reset Scoreboard</button>
+	</div>
 	<script>
 		const input_overlay_switch = document.getElementById('showOverlay');
 		const input_autoOverlay_switch = document.getElementById('autoOverlay');
@@ -39,6 +42,9 @@
 		}
 		function updateAutoOverlay(element) {
 			rpc_gsi_overlay_auto.value = input_autoOverlay_switch.checked;
+		}
+		function resetScoreboard(element) {
+			nodecg.sendMessage('resetScoreboard');
 		}
 	</script>
 </body>

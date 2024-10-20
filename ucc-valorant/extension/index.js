@@ -59,7 +59,9 @@ module.exports = function (nodecg) {
 
 		if (gameStatsJSON["event"] == "scene") {
 			// Agent Select
-			if (gameStatsJSON["data"] === "CharacterSelectPersistentLevel") {
+			if (gameStatsJSON["data"] === "CharacterSelectPersistentLevel" 
+			 || gameStatsJSON["data"] === "MainMenu"
+			) {
 				console.log("Agent Select Started - Resetting Scoreboard and Roster Data");
 				// Reset Scoreboard and Roster Data
 				team_scoreboard["team_0"] = [];
@@ -200,6 +202,21 @@ module.exports = function (nodecg) {
 			`${nodecg.bundleName}/graphics/index.html`
 		]
 	);
+
+	nodecg.listenFor('resetScoreboard', () => {
+		console.log("Manual Reset - Resetting Scoreboard and Roster Data");
+		// Reset Scoreboard and Roster Data
+		team_scoreboard["team_0"] = [];
+		team_scoreboard["team_1"] = [];
+
+		team_roster["team_0"] = [];
+		team_roster["team_1"] = [];
+		rpc_gsi_agentSelect_data.value = {
+			"team_0": [],
+			"team_1": []
+		};
+		rpc_gsi_scores.value = { "team_0": 0, "team_1": 0 };
+	});
 
 	router.options('/api/gameStats', (req, res) => {
 		res.status(200)
