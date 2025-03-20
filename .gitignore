@@ -1,2 +1,6 @@
-
-/ucc-valorant/node_modules
+node_modules
+.yo-rc.json
+/assets
+/cfg
+/db
+/logs
