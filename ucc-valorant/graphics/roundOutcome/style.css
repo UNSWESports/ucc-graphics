@@ -16,136 +16,63 @@ body {
   position: relative;
 }
 
-#agent_select {
-  position: absolute;
-  width: 70%;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-#lower_third {
+#middle_third {
   width: 100%;
-  height: 25%;
-  top: 71%;
+  height: 34%;
+  top: 30%;
   display: flex;
   position: relative;
   justify-content: center;
   overflow: hidden;
-}
-
-.player_name {
-  color: white;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.6px;
-  border-radius: 8px 8px 0 0;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 4px;
-  width: 100%;
-  margin: 0;
-  text-wrap: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  text-align: center;
-}
-
-.agent_icon {
-  width: 100px;
-  height: 100px;
-  transition: all 200ms ease-in-out;
-}
-
-.agent {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.divider {
-  width: 1px;
-  height: 80%;
-  background-color: rgba(255,255,255,0.5);
-  transition: all 500ms ease-in-out;
-}
-
-#left_side {
-  justify-content: end;
-}
-
-#right_side {
-  justify-content: start;
-}
-
-.both_sides {
-  width: 50%;
-  display: flex;
-  overflow: hidden;
-  transition: transform 600ms;
-  z-index: -1;
-}
-
-.as_area {
-  width: 70%;
-  height: 180px;
-  background-color: #005F5F;
-}
-
-.player {
-  width: 125px;
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  flex-direction: column;
-  transition: all 200ms ease-in-out;
-  transform: translateY(-150%);
-  overflow: hidden;
-}
-
-.players {
-  display: flex;
-  align-items: center;
-}
-
-.player_visible {
-  transform: translateY(0%);
+  clip-path: inset(50% 0 50% 0);
   transition: all 400ms ease-in-out;
 }
 
-.team {
-  width: 100%;
+#middle_third.visible {
+  clip-path: inset(0 0 0 0);
+}
+
+.group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  align-items: center;
+  width: 940px;
+}
+
+.graphic_bg {
+  position: absolute;
+  margin: auto 0;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+}
+
+.round_outcome {
+  text-align: center;
+  color: white;
+  font-size: 64px;
+  font-weight: 400;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-top: 56px;
+  margin-bottom: 8px;
+  text-wrap: nowrap;
+  font-family: 'Stretch Pro', 'Manrope', sans-serif;
+  transition: all 250ms ease-in-out;
+  font-variant: no-common-ligatures;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
 }
 
 .team_name {
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 32px;
   font-weight: 400;
   border-radius: 8px 8px 0 0;
   padding-left: 8px;
   padding-right: 8px;
-  width: 100%;
   margin: 0;
   text-wrap: nowrap;
-  font-family: 'Stretch Pro', 'Manrope', sans-serif;
+  font-family: 'Manrope', sans-serif;
   transition: all 250ms ease-in-out;
   font-variant: no-common-ligatures;
-}
-
-#agentSelect_img {
-  position: absolute;
-  top: 40%;
-  z-index: -2;
-  transform: translateY(-600%);
-}
-
-.activeMap {
-  filter: grayscale(0);
 }

@@ -1,5 +1,7 @@
 /* Element Constants */
 const agentSelectImg  = document.getElementById('matchOutcome_img');
+const middleThird     = document.getElementById('middle_third');
+const team_element    = document.getElementsByClassName('team_name')[0];
 
 /* NodeCG Replicants */
 const rpc_gsi_agentSelect_show = nodecg.Replicant('rpc_gsi_agentSelect_show', { defaultValue: false })
@@ -20,67 +22,11 @@ nodecg.listenFor("roundOutcome", (data) => {
     teamName = rpc_ucc_team2_name.value;
   }
 
-  
+  team_element.innerText = teamName;
+
+  middleThird.classList.add('visible');
+
+  setTimeout(() => {
+    middleThird.classList.remove('visible');
+  }, 6000);
 })
-
-/* Functions */
-function hideAgentSelect(){
-  const leftPlayerDivs = leftTeam.getElementsByClassName('player');
-  const rightPlayerDivs = rightTeam.getElementsByClassName('player');
-  const teamNames = document.getElementsByClassName('team_name');
-
-  // Different Directions for the Drop Down Animation
-  let i = 1;
-  for (let player of leftPlayerDivs) {
-    setTimeout(() => {
-      player.classList.remove('player_visible');
-    }, (125 * i++));
-  }
-  let j = 5;
-  for (let player of rightPlayerDivs) {
-    setTimeout(() => {
-      player.classList.remove('player_visible');
-    }, (125 * j--));
-  }
-
-  setTimeout(() => {
-    document.getElementById('agentSelect_img').style = 'transition: all 400ms ease-in-out;';
-  }, 400);
-
-  setTimeout(() => {
-    document.getElementById("left_side").style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 0 0 100%);"
-    document.getElementById("right_side").style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 100% 0 0);"
-    document.getElementsByClassName('divider')[0].style = "opacity: 0";
-    teamNames[0].style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 0 0 100%);"
-    teamNames[1].style = "transition: clip-path 600ms ease-in-out; clip-path: inset(0 100% 0 0);"
-  }, 300);
-}
-
-function showAgentSelect(){
-  const leftPlayerDivs = leftTeam.getElementsByClassName('player');
-  const rightPlayerDivs = rightTeam.getElementsByClassName('player');
-  const teamNames = document.getElementsByClassName('team_name');
-  document.getElementsByClassName('divider')[0].style = "opacity: 1";
-  document.getElementById("left_side").style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 0 0 30%);"
-  document.getElementById("right_side").style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 30% 0 0);"
-  teamNames[0].style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 0 0 0);"
-  teamNames[1].style = "transition: clip-path 1s ease-in-out; clip-path: inset(0 0 0 0);"
-
-  setTimeout(() => {
-    document.getElementById('agentSelect_img').style = 'transition: all 600ms ease-in-out; transform: translateY(100%);';
-  }, 500);
-
-  // Different Directions for the Drop Down Animation
-  let i = 5;
-  for (let player of leftPlayerDivs) {
-    setTimeout(() => {
-      player.classList.add('player_visible');
-    }, (125 * i--));
-  }
-  let j = 1;
-  for (let player of rightPlayerDivs) {
-    setTimeout(() => {
-      player.classList.add('player_visible');
-    }, (125 * j++));
-  }
-}

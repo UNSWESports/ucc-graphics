@@ -165,11 +165,13 @@ module.exports = function (nodecg) {
 			} 
 		}
 
-		if (gameStatsJSON["event"] == "match_score") {
+		MATCHSCORE: if (gameStatsJSON["event"] == "match_score") {
 			const oldScores = rpc_gsi_scores.value;
 			const newScores = JSON.parse(gameStatsJSON["data"]);
 			newScores["team_0"] = parseInt(newScores["team_0"]);
 			newScores["team_1"] = parseInt(newScores["team_1"]);
+
+			if (newScores["team_0"] === 0 && newScores["team_1"] === 0) break MATCHSCORE;
 
 			let winner;
 

@@ -23,7 +23,9 @@ const AGENT_MAP = {
   "Cable"			: "Deadlock",
   "Sequoia"		: "Iso",
   "Smonk"			: "Clove",
-  "Nox"				: "Vyse"
+  "Nox"				: "Vyse",
+  "Cashew"    : "Tejo",
+  "Terra"     : "Waylay"
 }
 
 const WEAPON_MAP = {
