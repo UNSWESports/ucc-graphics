@@ -1,6 +1,6 @@
 {
   "name": "ucc-valorant",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "UNSW Contenders Cup Graphics Package for Valorant",
   "homepage": "https://unswesports.com.au",
   "author": {
@@ -33,6 +33,14 @@
         "workspace": "UCC Valorant"
       },
       {
+        "name": "ucc-valorant-mapveto",
+        "title": "VALORANT Map Veto",
+        "width": 4,
+        "file": "mapVeto/mapVeto.html",
+        "headerColor": "#525F78",
+        "workspace": "UCC Valorant"
+      },
+      {
         "name": "ucc-valorant-agentselect",
         "title": "VALORANT Agent Select",
         "width": 3,
@@ -57,11 +65,28 @@
         "width": 1920,
         "height": 1080
       },
-	  {
-		"file": "roundOutcome/index.html",
-		"width": 1920,
-		"height": 1080
-	  }
+      {
+        "file": "mapVeto/bo1Fullscreen/index.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+      "file": "roundOutcome/index.html",
+      "width": 1920,
+      "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "mapimages",
+        "title": "Map Ban Images",
+        "allowedTypes": ["jpg", "jpeg", "gif", "png", "webp"]
+      },
+      {
+        "name": "mapvideos",
+        "title": "Map Ban Videos",
+        "allowedTypes": ["mp4"]
+      }
     ]
   },
   "repository": "https://github.com/nodecg/nodecg.git",

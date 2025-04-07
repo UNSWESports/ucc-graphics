@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <div class="section flex_col_sb gap_8">
+    <!-- Map 1 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">1</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map1Select" class="form__label">Map Selection:</label>
+          <select id="map1Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map1Text" name="map1Text" class="form__field"></input>
+          <label for="map1Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="divider"></div>
+
+    <!-- Map 2 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">2</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map2Select" class="form__label">Map Selection</label>
+          <select id="map2Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map2Text" name="map2Text" class="form__field"></input>
+          <label for="map2Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 3 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">3</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map3Select" class="form__label">Map Selection</label>
+          <select id="map3Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map3Text" name="map3Text" class="form__field"></input>
+          <label for="map3Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 4 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">4</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map4Select" class="form__label">Map Selection</label>
+          <select id="map4Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map4Text" name="map4Text" class="form__field"></input>
+          <label for="map4Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 5 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">5</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map5Select" class="form__label">Map Selection</label>
+          <select id="map5Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map5Text" name="map5Text" class="form__field"></input>
+          <label for="map5Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 6 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">6</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map6Select" class="form__label">Map Selection</label>
+          <select id="map6Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map6Text" name="map6Text" class="form__field"></input>
+          <label for="map6Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Map 7 -->
+    <div class="flex_col_sb">
+      <div class="flex_sb gap_8">
+        <p class="section_header flex_center">7</p>
+        <!-- Map Selection -->
+        <div class="form__group field full_field flex_grow_3">
+          <label for="map7Select" class="form__label">Map Selection</label>
+          <select id="map7Select" name="mapSelect" class="form__field dropdown"></select>
+        </div>
+        <!-- Winner/Inner Text -->
+        <div class="form__group field name_field flex_grow_2">
+          <input id="map7Text" name="map7Text" class="form__field"></input>
+          <label for="map7Text" class="form__label">Map Subtext:</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Settings -->
+    <div class="section flex gap_8">
+      <div class="flex justify_center flex_grow_2">
+        <button id="updateButton" class="button_update button">Update</button>
+      </div>
+      <div class="flex_g1 gap_8 flex_col_sb">
+        <div class="form__group field name_field flex_center">
+          <label for="toggleVisibility" class="form__label">Toggle Visibility [LIVE]:</label>
+          <label class="switch" style="margin-left: 0;">
+            <input type="checkbox" id="toggleVisibility" name="toggleVisibility" value="false" onchange="checkboxHandling(this)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+	<script src="script.js"></script>
+</body>
+</html>
