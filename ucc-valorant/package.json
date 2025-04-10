@@ -86,6 +86,16 @@
         "name": "mapvideos",
         "title": "Map Ban Videos",
         "allowedTypes": ["mp4"]
+      },
+      {
+        "name": "mapvetobuild1",
+        "title": "Map Ban Build 1 Audio",
+        "allowedTypes": ["mp3"]
+      },
+      {
+        "name": "mapvetobuild2",
+        "title": "Map Ban Build 2 Audio",
+        "allowedTypes": ["mp3"]
       }
     ]
   },

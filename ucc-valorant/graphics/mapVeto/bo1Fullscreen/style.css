@@ -46,10 +46,13 @@ p {
 
 .bans {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
+  align-content: space-between;
   justify-content: space-between;
-  gap: 24px;
+  align-items: center;
+  gap: 0px;
+  width: 765px;
   height: 710px;
 }
 
@@ -61,7 +64,7 @@ p {
 
 .mediumMap {
   width: 375px;
-  height: 215px;
+  height: 210px;
   background-color: grey;
   font-size: 28px;
 }
@@ -86,13 +89,23 @@ p {
 
 .map {
   color: white;
+  box-sizing: border-box;
+  border-width: 0;
+  border-color: #005F5F;
+  border-left-width: 8px;
+  border-bottom-width: 8px;
+  border-radius: 8px;
+  border-style: solid;
+  /* margin-left: 32px;
+  margin-right: 32px; */
   font-variant-ligatures: none;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: width 1.5s ease-in-out, height 1.5s ease-in-out;
+  transition: 
+    all 1.5s ease-in-out;
 }
 
 .mapContainer {
@@ -127,6 +140,7 @@ p {
   height: 100%;
   width: 100%;
   filter: brightness(0.8);
+  transition: filter 1.5s ease-in-out;
 }
 
 #mapBan1, #mapBan2, #mapBan3, #mapBan4, #mapBan5, #mapBan6 {

@@ -18,6 +18,9 @@ const map5Text          = document.getElementById('map5Text');
 const map6Text          = document.getElementById('map6Text');
 const map7Text          = document.getElementById('map7Text');
 
+const btnInflate        = document.getElementById('inflation');
+const btnDeflate        = document.getElementById('deflation');
+
 /* NodeCG Replicants */
 const replMapImagesAsset = nodecg.Replicant('assets:mapimages');
 const replMapVideosAsset = nodecg.Replicant('assets:mapvideos');
@@ -94,6 +97,13 @@ replMapBan7.on('change', (newValue, oldValue) => {
 /* NodeCG Updates */
 
 /* Event Listeners */
+btnInflate.onclick = () => {
+  nodecg.sendMessage('inflate');
+}
+
+btnDeflate.onclick = () => {
+  nodecg.sendMessage('deflate');
+}
 
 btnUpdate.onclick = () => {
   let replMapBan1Video = replMapVideosAsset.value.filter(
