@@ -135,6 +135,10 @@ body {
     display: block;
 }
 
+.map_toggle_container {
+    width: 50%;
+}
+
 .flex_g1 {
     flex-grow: 1;
 }

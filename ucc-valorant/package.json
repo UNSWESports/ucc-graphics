@@ -70,6 +70,11 @@
         "width": 1920,
         "height": 1080
       },
+	  {
+        "file": "mapVeto/bo3Fullscreen/index.html",
+        "width": 1920,
+        "height": 1080
+      },
       {
       "file": "roundOutcome/index.html",
       "width": 1920,
