@@ -49,21 +49,27 @@ replMapBan2.on('change', (newValue, oldValue) => {
 });
 
 replMapBan3.on('change', (newValue, oldValue) => {
-  eMapBan3Div.getElementsByClassName('mapVideo')[0].getElementsByClassName('mapVideoSrc')[0].src = newValue["videoUrl"];
-  console.log(newValue["videoUrl"])
-  eMapBan3Div.getElementsByClassName('mapVideo')[0].load();
+  const eVideoSrc = eMapBan3Div.getElementsByClassName('mapVideo')[0].getElementsByClassName('mapVideoSrc')[0]
+  if (eVideoSrc.dataset.videosrc !== newValue["videoUrl"]) {
+    eVideoSrc.src = newValue["videoUrl"];
+    eVideoSrc.dataset.videosrc = newValue["videoUrl"];
+    eMapBan3Div.getElementsByClassName('mapVideo')[0].load();
+  }
   if (newValue["active"]) {
     eMapBan3Div.getElementsByClassName('mapVideo')[0].play();
     activeMap = eMapBan3Div;
-  }
+  } else eMapBan3Div.getElementsByClassName('mapVideo')[0].pause();
   eMapBan3Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan3Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
 });
 
 replMapBan4.on('change', (newValue, oldValue) => {
-  eMapBan4Div.getElementsByClassName('mapVideo')[0].getElementsByClassName('mapVideoSrc')[0].src = newValue["videoUrl"];
-  console.log(newValue["videoUrl"])
-  eMapBan4Div.getElementsByClassName('mapVideo')[0].load();
+  const eVideoSrc = eMapBan4Div.getElementsByClassName('mapVideo')[0].getElementsByClassName('mapVideoSrc')[0]
+  if (eVideoSrc.dataset.videosrc !== newValue["videoUrl"]) {
+    eVideoSrc.src = newValue["videoUrl"];
+    eVideoSrc.dataset.videosrc = newValue["videoUrl"];
+    eMapBan4Div.getElementsByClassName('mapVideo')[0].load();
+  } else eMapBan4Div.getElementsByClassName('mapVideo')[0].pause();
   if (newValue["active"]) {
     eMapBan4Div.getElementsByClassName('mapVideo')[0].play();
     activeMap = eMapBan4Div;
@@ -85,13 +91,16 @@ replMapBan6.on('change', (newValue, oldValue) => {
 });
 
 replMapBan7.on('change', (newValue, oldValue) => {
-  eMapBan7Div.getElementsByClassName('mapVideo')[0].getElementsByClassName('mapVideoSrc')[0].src = newValue["videoUrl"];
-  console.log(newValue["videoUrl"])
-  eMapBan7Div.getElementsByClassName('mapVideo')[0].load();
+  const eVideoSrc = eMapBan7Div.getElementsByClassName('mapVideo')[0].getElementsByClassName('mapVideoSrc')[0]
+  if (eVideoSrc.dataset.videosrc !== newValue["videoUrl"]) {
+    eVideoSrc.src = newValue["videoUrl"];
+    eVideoSrc.dataset.videosrc = newValue["videoUrl"];
+    eMapBan7Div.getElementsByClassName('mapVideo')[0].load();
+  }
   if (newValue["active"]) {
     eMapBan7Div.getElementsByClassName('mapVideo')[0].play();
     activeMap = eMapBan7Div;
-  }
+  } else eMapBan7Div.getElementsByClassName('mapVideo')[0].pause();
   eMapBan7Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan7Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
 });
