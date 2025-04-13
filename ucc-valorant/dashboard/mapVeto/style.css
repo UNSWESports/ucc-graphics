@@ -49,6 +49,15 @@ body {
     gap: 8px;
 }
 
+.gap_32 {
+    gap: 32px;
+}
+
+.colorpicker {
+    padding: 0;
+    block-size: 2em;
+}
+
 .team_header {
     color: white;
     margin: 0%;
@@ -70,6 +79,11 @@ body {
 
 .flex {
     display: flex;
+}
+
+.flex_col {
+    display: flex;
+    flex-direction: column;
 }
 
 .flex_col_sb {

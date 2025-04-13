@@ -23,6 +23,8 @@ const replMapBan4 = nodecg.Replicant('mapBan4');
 const replMapBan5 = nodecg.Replicant('mapBan5');
 const replMapBan6 = nodecg.Replicant('mapBan6');
 const replMapBan7 = nodecg.Replicant('mapBan7');
+const replTrimColour = nodecg.Replicant('trimColour', { defaultValue: '#005F5F' });
+
 
 /* NodeCG Event Listeners */
 replAudioBuild1.on('change', (newValue, oldValue) => {
@@ -37,13 +39,13 @@ replAudioBuild2.on('change', (newValue, oldValue) => {
 });
 
 replMapBan1.on('change', (newValue, oldValue) => {
-  eMapBan1Div.style = `background-image: url('${newValue["imageUrl"]}'); background-repeat: no-repeat; background-position: center; background-size: cover;`;
+  eMapBan1Div.style.backgroundImage = `url('${newValue["imageUrl"]}')`; 
   eMapBan1Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan1Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
 });
 
 replMapBan2.on('change', (newValue, oldValue) => {
-  eMapBan2Div.style = `background-image: url('${newValue["imageUrl"]}'); background-repeat: no-repeat; background-position: center; background-size: cover;`;
+  eMapBan2Div.style.backgroundImage = `url('${newValue["imageUrl"]}')`; 
   eMapBan2Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan2Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
 });
@@ -79,13 +81,13 @@ replMapBan4.on('change', (newValue, oldValue) => {
 });
 
 replMapBan5.on('change', (newValue, oldValue) => {
-  eMapBan5Div.style = `background-image: url('${newValue["imageUrl"]}'); background-repeat: no-repeat; background-position: center; background-size: cover;`;
+  eMapBan5Div.style.backgroundImage = `url('${newValue["imageUrl"]}')`; 
   eMapBan5Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan5Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
 });
 
 replMapBan6.on('change', (newValue, oldValue) => {
-  eMapBan6Div.style = `background-image: url('${newValue["imageUrl"]}'); background-repeat: no-repeat; background-position: center; background-size: cover;`;
+  eMapBan6Div.style.backgroundImage = `url('${newValue["imageUrl"]}')`; 
   eMapBan6Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan6Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
 });
@@ -103,6 +105,14 @@ replMapBan7.on('change', (newValue, oldValue) => {
   } else eMapBan7Div.getElementsByClassName('mapVideo')[0].pause();
   eMapBan7Div.getElementsByClassName('mapText')[0].innerText = newValue["name"];
   eMapBan7Div.getElementsByClassName('mapSubtext')[0].innerText = newValue["text"];
+});
+
+replTrimColour.on('change', (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    for (let e of document.getElementsByClassName('map')) {
+      e.style.borderColor = newValue;
+    }
+  }
 });
 
 nodecg.listenFor('inflate', () => {
@@ -139,8 +149,8 @@ const expandMapBan = (mapBanDiv) => {
 
   setTimeout(() => {
     mapBanDiv.getElementsByClassName('mapVideoContainer')[0].style.filter = 'brightness(1)'
-    mapBanDiv.getElementsByClassName('mapText')[0].style.fontSize = '1.5em';
-    mapBanDiv.getElementsByClassName('mapSubtext')[0].style.fontSize = '1em';
+    mapBanDiv.getElementsByClassName('mapText')[0].style.fontSize = '1.8em';
+    mapBanDiv.getElementsByClassName('mapSubtext')[0].style.fontSize = '1.15em';
     mapBanDiv.style.position = 'fixed';
     mapBanDiv.style.top = `0px`;
     mapBanDiv.style.left = -divLMargin +'px';

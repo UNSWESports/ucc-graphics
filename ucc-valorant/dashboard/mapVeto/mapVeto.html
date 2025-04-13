@@ -176,16 +176,27 @@
     <div class="divider"></div>
 
     <!-- Settings -->
-    <div class="section flex gap_8">
-      <div class="flex justify_center flex_grow_2">
-        <button id="updateButton" class="button_update button">Update</button>
-      </div>
-      <div class="flex justify_center">
-        <div class="flex justify_center flex_grow_2">
-          <button id="inflation" class="button_update button">Expand Active</button>
+    <div class="section flex_col gap_32">
+      <div class="flex gap_8">
+        <div class="form__group field name_field flex_grow_3">
+          <input id="trimColour" name="trimColour" type="color" class="form__field colorpicker"></input>
+          <label for="trimColour" class="form__label">Graphic Trim Colour:</label>
         </div>
+        <div class="flex justify_center flex_g1">
+          <button id="trimColourReset" class="button">Reset to UCC</button>
+        </div>
+      </div>
+      <div class="flex gap_8">
         <div class="flex justify_center flex_grow_2">
-          <button id="deflation" class="button_update button">Deflate Active</button>
+          <button id="updateButton" class="button_update button">Update</button>
+        </div>
+        <div class="flex justify_center">
+          <div class="flex justify_center flex_grow_2">
+            <button id="inflation" class="button_update button">Expand Active</button>
+          </div>
+          <div class="flex justify_center flex_grow_2">
+            <button id="deflation" class="button_update button">Deflate Active</button>
+          </div>
         </div>
       </div>
     </div>

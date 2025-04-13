@@ -104,8 +104,11 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   transition: 
-    all 1.5s ease-in-out;
+    all 1.5s ease-in-out, border-color 0s linear;
 }
 
 .mapContainer {

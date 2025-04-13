@@ -1,5 +1,6 @@
 /* Element Constants */
 const btnUpdate         = document.getElementById('updateButton');
+const btnTrimReset      = document.getElementById('trimColourReset');
 const switchVisibility  = document.getElementById('toggleVisibility');
 
 const map1Div           = document.getElementById('map1');
@@ -26,6 +27,8 @@ const map5Text          = map5Div.getElementsByClassName('mapSubtext')[0];
 const map6Text          = map6Div.getElementsByClassName('mapSubtext')[0];
 const map7Text          = map7Div.getElementsByClassName('mapSubtext')[0];
 
+const settingColour     = document.getElementById('trimColour');
+
 const btnInflate        = document.getElementById('inflation');
 const btnDeflate        = document.getElementById('deflation');
 
@@ -41,6 +44,8 @@ const replMapBan4 = nodecg.Replicant('mapBan4');
 const replMapBan5 = nodecg.Replicant('mapBan5');
 const replMapBan6 = nodecg.Replicant('mapBan6');
 const replMapBan7 = nodecg.Replicant('mapBan7');
+
+const replTrimColour = nodecg.Replicant('trimColour', { defaultValue: '#005F5F' });
 
 /* Mapping */
 
@@ -138,6 +143,10 @@ replMapBan7.on('change', (newValue, oldValue) => {
   map7Div.getElementsByClassName('mapActiveToggle')[0].checked = newValue?.active;
 });
 
+replTrimColour.on('change', (newValue, oldValue) => {
+  settingColour.value = newValue;
+});
+
 /* NodeCG Updates */
 
 /* Event Listeners */
@@ -147,6 +156,10 @@ btnInflate.onclick = () => {
 
 btnDeflate.onclick = () => {
   nodecg.sendMessage('deflate');
+}
+
+btnTrimReset.onclick = () => {
+  settingColour.value = '#005F5F';
 }
 
 btnUpdate.onclick = () => {
@@ -233,6 +246,8 @@ btnUpdate.onclick = () => {
     "text": map7Text.value,
     "active": map7Div.getElementsByClassName('mapActiveToggle')[0]?.checked ?? false
   };
+
+  replTrimColour.value = settingColour.value;
 };
 
 /* Functions */
